@@ -19,3 +19,7 @@
 	url = https://github.com/groenewege/vim-less.git
 	ignore = dirty
 
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git
+    ignore = dirty

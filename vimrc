@@ -21,16 +21,25 @@ map <leader>rr :source ~/.vimrc<CR>
 " fast saving
 nmap <leader>w :w!<CR>
 
-" :W sudo saves the file
-" command W w !sudo tee % > /dev/null
-
 execute pathogen#infect()
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
 syntax on
 
+
+" finding files - search into subfolders
+" provides tab completion for file-related tasks
+" https://youtu.be/XA2WjJbmmoM?t=421
+set path+=**
+
+" display matches for tab completion
+set wildmenu
+set wildmode=list:longest,full
+
+
+
 """"""""
-" USER INTERFACE
+" USER INTERFACE more or less
 """"""""
 
 set guifont=Inconsolata\ for\ Powerline:h15
@@ -59,22 +68,31 @@ let g:lightline = {
 
 inoremap jj <Esc>
 
+
+" Show line numbers in hybrid mode
+set relativenumber
+set number
+" this switcheroo adapted from https://vi.stackexchange.com/a/7
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+
+nnoremap <leader>nt :call NumberToggle()<cr>
+
 " height of the command bar
 set cmdheight=2
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 " display incomplete commands
 set showcmd
-" Show line numbers in hybrid mode
-set relativenumber
-set number
 " Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
 " much history
 set history=100
-
-set wildmenu
-set wildmode=list:longest,full
 
 " tab management: set to 4 spaces
 set tabstop=4 shiftwidth=4 softtabstop=4
@@ -88,8 +106,28 @@ set wrapmargin=0
 
 set ruler
 
+
+""""""""
+" highlighting
+""""""""
+
 " highlight matches
 set hlsearch
+
+" highlight line when jumping to next result
+" https://youtu.be/aHm36-na4-4?t=345
+nnoremap <silent> n  n:call HLNext(0.4)<cr>
+nnoremap <silent> N  N:call HLNext(0.4)<cr>
+
+function! HLNext (blinktime)
+    set invcursorline
+    redraw
+    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+    set invcursorline
+    redraw
+endfunction
+
+
 " incremental searching
 set incsearch
 " case-insensitive
@@ -105,6 +143,10 @@ nmap <leader>l :set list!<CR>
 
 let g:netrw_liststyle=3    " use tree mode as default view
 let g:netrw_browse_split=4 " open file in previous buffer
+
+" newline in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
 
 """"""""
@@ -128,6 +170,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+
 """"""""
 " status line
 """"""""
@@ -139,6 +182,7 @@ set laststatus=2
 
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
 
 """"""""
 " goyo
