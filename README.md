@@ -9,6 +9,7 @@ http://www.nils-haldenwang.de/frameworks-and-tools/git/how-to-ignore-changes-in-
 git clone https://github.com/janoewen/vimconf ~/.vim
 echo 'runtime vimrc' >> ~/.vimrc
 cd ~/.vim
+mkdir backups
 git submodule init
 git submodule update
 ```
