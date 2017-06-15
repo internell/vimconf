@@ -1,0 +1,21 @@
+[submodule "bundle/goyo"]
+	path = bundle/goyo
+	url = https://github.com/junegunn/goyo.vim.git
+	ignore = dirty
+[submodule "bundle/lightline"]
+	path = bundle/lightline
+	url = https://github.com/itchyny/lightline.vim.git
+	ignore = dirty
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+	ignore = dirty
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+	ignore = dirty
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+	ignore = dirty
+
