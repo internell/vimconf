@@ -113,6 +113,8 @@ set ruler
 
 " highlight matches
 set hlsearch
+" and clear
+nnoremap <leader>h :noh<cr>
 
 " highlight line when jumping to next result
 " https://youtu.be/aHm36-na4-4?t=345
