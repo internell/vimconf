@@ -89,10 +89,8 @@ set cmdheight=2
 set backspace=indent,eol,start
 " display incomplete commands
 set showcmd
-" Allow hidden buffers, don't limit to 1 file per window/split
-set hidden
 " much history
-set history=100
+set history=1000
 
 " tab management: set to 4 spaces
 set tabstop=4 shiftwidth=4 softtabstop=4
@@ -157,11 +155,18 @@ nmap <CR> o<Esc>
 
 set title
 
+" Allow hidden buffers, don't limit to 1 file per window/split
+set hidden
+
 " close the current buffer
-map <leader>bd :bd<CR>
+nnoremap <leader>bd :bd<CR>
 
 " close all buffers
-map <leader>ba :bufdo bd<CR>
+nnoremap <leader>ba :bufdo bd<CR>
+
+" https://stackoverflow.com/a/4468491
+" close current open buffer and open previous buffer in same window
+nnoremap <C-c> :bp\|bd #<cr>
 
 " return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

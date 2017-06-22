@@ -23,3 +23,6 @@
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
     ignore = dirty
+[submodule "bundle/vinegar"]
+	path = bundle/vinegar
+	url = https://github.com/tpope/vim-vinegar.git
