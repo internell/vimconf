@@ -10,8 +10,9 @@ set encoding=utf-8
 set backup
 " put 'em here
 set backupdir=~/.vim/backups
-" and for the swap files
-set dir=~/.vim/backups
+" and for the swap and undo files
+set directory=~/.vim/backups
+set undodir=~/.vim/backups
 
 let mapleader = ","
 set timeout timeoutlen=1500
@@ -36,6 +37,10 @@ set path+=**
 set wildmenu
 set wildmode=list:longest,full
 
+set wildignore+=.git,.svn
+set wildignore+=*.DS_Store
+" no point trying to open these
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png
 
 
 """"""""
@@ -65,8 +70,6 @@ let g:lightline = {
       \   'readonly': '%{&readonly?"":""}', 
       \ }
       \ }
-
-inoremap jj <Esc>
 
 
 " Show line numbers in hybrid mode
@@ -171,11 +174,20 @@ nnoremap <C-c> :bp\|bd #<cr>
 " return to last edit position when opening files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+
 " easier navigation between split windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
+
+" cycle through tabs
+nnoremap <leader>( :tabprev<cr>
+nnoremap <leader>) :tabnext<cr>
 
 
 """"""""
@@ -199,3 +211,23 @@ map <leader>g :Goyo
 let g:goyo_width='80%'
 let g:goyo_height='70%'
 let g:goyo_linenr=1
+
+
+""""""""
+" editing 
+""""""""
+
+inoremap jj <Esc>
+
+" the following stolen remorselessly from Steve Losh's vimrc 
+
+" fast open
+nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
+
+" HTML tag closing
+inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
+
+iabbrev ldis ಠ_ಠ
+iabbrev lsad ಥ_ಥ
+iabbrev lhap ಥ‿ಥ
+iabbrev lmis ಠ‿ಠ
