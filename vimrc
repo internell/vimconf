@@ -1,32 +1,79 @@
-" adapted from: http://vimuniversity.com/samples/your-first-vimrc-should-be-nearly-empty
-" and: https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
+" borrows from: 
+" https://gist.github.com/r00k/8fc7e4e9d35ccbfb64aa
+" https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
+" http://www.terminally-incoherent.com/blog/2012/03/26/how-to-configure-vim/
+" no way that's an exhaustive list though
 
-" Use Vim settings, rather than Vi settings.
-" This must be first, because it changes other options as a side effect.
+
+""""""""""""""""
+" BASIC CONFIG
+""""""""""""""""
+
 set nocompatible
-
 set encoding=utf-8
 
-set backup
-" put 'em here
-set backupdir=~/.vim/backups
-" and for the swap and undo files
-set directory=~/.vim/backups
-set undodir=~/.vim/backups
+" get plugins going
+execute pathogen#infect()
+
+" enable file type detection and do language-dependent indenting
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+
+" much history
+set history=1000
 
 let mapleader = ","
+" makes mapleader accessible within functions
+let g:mapleader = ","
 set timeout timeoutlen=1500
-
-map <leader>rr :source ~/.vimrc<CR>
 
 " fast saving
 nmap <leader>w :w!<CR>
 
-execute pathogen#infect()
-" Enable file type detection and do language-dependent indenting.
-filetype plugin indent on
-syntax on
+" a nicer return to normal mode
+inoremap jj <Esc>
 
+" press ; to issue commands in normal mode more lazily
+nnoremap ; :
+
+" pull up vimrc
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+" reload vimrc
+nmap <silent> <leader>rr :so $MYVIMRC<CR>
+
+" shut up, vim
+set visualbell
+set noerrorbells
+
+""""""""""""""""
+" FILE HANDLING
+""""""""""""""""
+
+" set backup
+" put 'em here
+" set backupdir=~/.vim/backups
+" and for the swap and undo files
+" set directory=~/.vim/backups
+" set undodir=~/.vim/backups
+" actually let's just not
+set nobackup
+set nowritebackup
+set noswapfile
+
+" save on tabbing away
+au FocusLost * :wa
+
+" use tree mode as default view
+let g:netrw_liststyle=3
+" open file in previous buffer
+let g:netrw_browse_split=4
+
+
+""""""""""""""""
+" SEARCH, MATCHING, HIGHLIGHTING
+""""""""""""""""
 
 " finding files - search into subfolders
 " provides tab completion for file-related tasks
@@ -39,82 +86,13 @@ set wildmode=list:longest,full
 
 set wildignore+=.git,.svn
 set wildignore+=*.DS_Store
-" no point trying to open these
+" why would I want to open these
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png
 
 
-""""""""
-" USER INTERFACE more or less
-""""""""
-
-set guifont=Inconsolata\ for\ Powerline:h15
-" let g:Powerline_symbols = 'fancy'
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
-set termencoding=utf-8
-
-" because lightline displays the mode
-set noshowmode
-
-set background=dark
-colorscheme solarized
-
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \           [ 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}', 
-      \ }
-      \ }
-
-
-" Show line numbers in hybrid mode
-set relativenumber
-set number
-" this switcheroo adapted from https://vi.stackexchange.com/a/7
-function! NumberToggle()
-    if(&relativenumber == 1)
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-
-nnoremap <leader>nt :call NumberToggle()<cr>
-
-" height of the command bar
-set cmdheight=2
-" Make backspace behave in a sane manner.
-set backspace=indent,eol,start
-" display incomplete commands
-set showcmd
-" much history
-set history=1000
-
-" tab management: set to 4 spaces
-set tabstop=4 shiftwidth=4 softtabstop=4
-set expandtab
-" set smartindent
-set autoindent
-" nicer word wrapping
-set wrap linebreak nolist
-set textwidth=0
-set wrapmargin=0
-
-set ruler
-
-
-""""""""
-" highlighting
-""""""""
-
 " highlight matches
 set hlsearch
-" and clear
+" and clear when I feel like it
 nnoremap <leader>h :noh<cr>
 
 " highlight line when jumping to next result
@@ -130,6 +108,8 @@ function! HLNext (blinktime)
     redraw
 endfunction
 
+" highlight matching brackets
+set showmatch
 
 " incremental searching
 set incsearch
@@ -141,24 +121,87 @@ set smartcase
 " for regex
 set magic
 
-set listchars=tab:»\ ,eol:¬,nbsp:·,trail:·,extends:›,precedes:‹
+
+""""""""""""""""
+" COLOURS, FONTS, SYNTAX HIGHLIGHTING
+""""""""""""""""
+
+set guifont=Inconsolata\ for\ Powerline:h15
+" let g:Powerline_symbols = 'fancy'
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8
+
+set background=dark
+colorscheme solarized
+
+" syntax highlighting for LESS
+nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+
+""""""""""""""""
+" INTERFACE / STATUS LINE
+""""""""""""""""
+
+" because lightline already displays the mode
+set noshowmode
+
+" always show
+set laststatus=2
+
+" set statusline=\ %{v:register}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \           [ 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}', 
+      \ }
+      \ }
+
+" height of the command bar
+set cmdheight=2
+" display incomplete commands
+set showcmd
+
+set ruler
+
+" show line numbers in hybrid mode
+set relativenumber
+set number
+" this switcheroo adapted from https://vi.stackexchange.com/a/7
+function! NumberToggle()
+    if(&relativenumber == 1)
+        set number
+    else
+        set relativenumber
+    endif
+endfunc
+nnoremap <leader>nt :call NumberToggle()<cr>
+
+" cursor crosshairs
+set cursorline
+set cursorcolumn
+
+set showbreak=↪
+set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
+" a nice invisible char toggler
 nmap <leader>l :set list!<CR>
 
-let g:netrw_liststyle=3    " use tree mode as default view
-let g:netrw_browse_split=4 " open file in previous buffer
-
-" newline in normal mode
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
-
 
 """"""""
-" navigation, tabs, windows, buffers
+" NAVIGATION, TABS, WINDOWS, BUFFERS
+" JUST KIDDING ABOUT THE TABS
 """"""""
 
+" sets title for terminal window
 set title
 
-" Allow hidden buffers, don't limit to 1 file per window/split
+" allow buffers in background, don't limit to 1 file per window/split
 set hidden
 
 " close the current buffer
@@ -190,44 +233,64 @@ nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
 
 
-""""""""
-" status line
-""""""""
+""""""""""""""""
+" EDITING / TEXT BEHAVIOUR
+""""""""""""""""
 
-" always show
-set laststatus=2
+" newline in normal mode
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc>
 
-" set statusline=\ %{v:register}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
+" make backspace behave in a sane manner
+set backspace=indent,eol,start
 
-" syntax highlighting for LESS
-nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+" tab management: set to 4 spaces
+set tabstop=4 shiftwidth=4 softtabstop=4
+set expandtab
 
+set autoindent
+" copy previous indent on enter
+set copyindent
+set smartindent
 
-""""""""
-" goyo
-""""""""
+" toggle paste mode (to paste properly indented text)
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
 
-map <leader>g :Goyo
-let g:goyo_width='80%'
-let g:goyo_height='70%'
-let g:goyo_linenr=1
-
-
-""""""""
-" editing 
-""""""""
-
-inoremap jj <Esc>
+" nicer word wrapping
+set wrap linebreak nolist
+set textwidth=0
+set wrapmargin=0
 
 " the following stolen remorselessly from Steve Losh's vimrc 
-
 " fast open
 nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
-
 " HTML tag closing
 inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
-
+" and because why not
 iabbrev ldis ಠ_ಠ
 iabbrev lsad ಥ_ಥ
 iabbrev lhap ಥ‿ಥ
 iabbrev lmis ಠ‿ಠ
+
+" multipurpose tab key stolen from Gary Bernhardt's vimrc
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
+
+""""""""""""""""
+" GOYO SETTINGS
+""""""""""""""""
+
+map <leader>g :Goyo<CR>
+let g:goyo_width='80%'
+let g:goyo_height='70%'
+let g:goyo_linenr=1
