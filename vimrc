@@ -287,6 +287,18 @@ inoremap <s-tab> <c-n>
 
 
 """"""""""""""""
+" COMMENTING
+""""""""""""""""
+
+" space after comment delimiter
+let g:NERDSpaceDelims = 1
+" allow commenting and inverting empty lines
+let g:NERDCommentEmptyLines = 1
+" this appears to be the best way to customize lesscss comments
+let g:NERDCustomDelimiters = { 'less': { 'left': '//','right': '' } }
+
+
+""""""""""""""""
 " GOYO SETTINGS
 """"""""""""""""
 

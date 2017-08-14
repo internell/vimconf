@@ -3,6 +3,7 @@ if exists("did_load_filetypes")
 endif
 
 augroup filetypedetect
-    au! BufRead,BufNewFile *.tmpl setfiletype tt2
-    au! BufRead,BufNewFile *.tt setfiletype tt2
+    au! BufRead,BufNewFile *.tmpl setfiletype tt2html
+    au! BufRead,BufNewFile *.tt setfiletype tt2html
 augroup END
+
