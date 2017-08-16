@@ -171,23 +171,22 @@ set showcmd
 set ruler
 
 " show line numbers in hybrid mode
-set relativenumber
+" set relativenumber
 set number
 " this switcheroo adapted from https://vi.stackexchange.com/a/7
-function! NumberToggle()
+function! RelativeNumberToggle()
     if(&relativenumber == 1)
         set number
     else
         set relativenumber
     endif
 endfunc
-nnoremap <leader>nt :call NumberToggle()<cr>
+nnoremap <leader>rt :call RelativeNumberToggle()<cr>
 
 " cursor crosshairs
 set cursorline
 set cursorcolumn
 
-set showbreak=↪
 set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
 " a nice invisible char toggler
 nmap <leader>l :set list!<CR>
@@ -261,6 +260,9 @@ set pastetoggle=<F2>
 set wrap linebreak nolist
 set textwidth=0
 set wrapmargin=0
+
+" emmet remapping
+let g:user_emmet_leader_key='<C-e>'
 
 " the following stolen remorselessly from Steve Losh's vimrc 
 " fast open
