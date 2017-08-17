@@ -257,9 +257,13 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 
 " nicer word wrapping
-set wrap linebreak nolist
+set wrap
+set linebreak
+set nolist
 set textwidth=0
 set wrapmargin=0
+" don't wrap while typing
+set formatoptions-=t
 
 " emmet remapping
 let g:user_emmet_leader_key='<C-e>'
