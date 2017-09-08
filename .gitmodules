@@ -46,3 +46,6 @@
 	path = bundle/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange.git
     ignore = dirty
+[submodule "bundle/vim-autoclose"]
+	path = bundle/vim-autoclose
+	url = https://github.com/Townk/vim-autoclose.git
