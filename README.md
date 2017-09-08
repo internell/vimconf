@@ -6,7 +6,7 @@ http://www.nils-haldenwang.de/frameworks-and-tools/git/how-to-ignore-changes-in-
 ## Get it going
 
 ```bash
-git clone https://github.com/janoewen/vimconf ~/.vim
+git clone https://github.com/internell/vimconf ~/.vim
 echo 'runtime vimrc' >> ~/.vimrc
 cd ~/.vim
 mkdir backups
