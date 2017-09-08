@@ -92,8 +92,10 @@ set wildignore+=*.jpg,*.jpeg,*.gif,*.png
 
 " highlight matches
 set hlsearch
-" and clear when I feel like it
+" clear highlights
 nnoremap <leader>h :noh<cr>
+" clear the damn pattern
+:command C let @/=""
 
 " highlight line when jumping to next result
 " https://youtu.be/aHm36-na4-4?t=345
