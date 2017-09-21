@@ -15,6 +15,7 @@ set encoding=utf-8
 " get plugins going
 execute pathogen#infect()
 
+filetype off
 " enable file type detection and do language-dependent indenting
 filetype on
 filetype plugin on
@@ -137,6 +138,10 @@ set termencoding=utf-8
 
 set background=dark
 colorscheme solarized
+nnoremap <leader>1 :colorscheme solarized<cr>
+nnoremap <leader>2 :colorscheme obsidian<cr>
+nnoremap <leader>3 :colorscheme distinguished<cr>
+nnoremap <leader>4 :colorscheme badwolf<cr>
 
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -253,6 +258,12 @@ set autoindent
 " copy previous indent on enter
 set copyindent
 set smartindent
+
+" tab into new brackets/braces/what have you
+" https://stackoverflow.com/a/14547523
+inoremap {<CR> {<CR>}<C-o>O
+" or use ctrl + return: https://stackoverflow.com/a/4477201
+" imap <C-Return> <CR><CR><C-o>k<Tab>
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
