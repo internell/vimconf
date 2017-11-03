@@ -146,6 +146,8 @@ nnoremap <leader>4 :colorscheme badwolf<cr>
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
+" what use do I even have for modula files
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 """"""""""""""""
 " INTERFACE / STATUS LINE
