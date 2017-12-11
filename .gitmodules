@@ -49,3 +49,8 @@
 [submodule "bundle/vim-autoclose"]
 	path = bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
+    ignore = dirty
+[submodule "bundle/unicycle"]
+	path = bundle/unicycle
+	url = https://github.com/vim-scripts/UniCycle.git
+    ignore = dirty
