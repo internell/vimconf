@@ -306,6 +306,16 @@ endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
+" smart quote stuff with vim-textobj-quote
+augroup textobj_quote
+    autocmd!
+    autocmd FileType markdown call textobj#quote#init({'educate': 0})
+    autocmd FileType text call textobj#quote#init()
+augroup END
+
+map <silent> <leader>qc <Plug>ReplaceWithCurly
+map <silent> <leader>qs <Plug>ReplaceWithStraight
+
 
 """"""""""""""""
 " COMMENTING
