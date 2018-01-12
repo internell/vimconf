@@ -52,13 +52,6 @@ set noerrorbells
 " FILE HANDLING
 """"""""""""""""
 
-" set backup
-" put 'em here
-" set backupdir=~/.vim/backups
-" and for the swap and undo files
-" set directory=~/.vim/backups
-" set undodir=~/.vim/backups
-" actually let's just not
 set nobackup
 set nowritebackup
 set noswapfile
@@ -88,8 +81,7 @@ set wildmode=list:longest,full
 set wildignore+=.git,.svn
 set wildignore+=*.DS_Store
 " why would I want to open these
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png
-
+set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
 
 " highlight matches
 set hlsearch
@@ -179,18 +171,18 @@ set showcmd
 
 set ruler
 
-" show line numbers in hybrid mode
-" set relativenumber
 set number
+set norelativenumber
 " this switcheroo adapted from https://vi.stackexchange.com/a/7
-function! RelativeNumberToggle()
-    if(&relativenumber == 1)
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
-nnoremap <leader>rt :call RelativeNumberToggle()<cr>
+" function! RelativeNumberToggle()
+    " if(&relativenumber == 1)
+        " set number
+    " else
+        " set relativenumber
+    " endif
+" endfunc
+" nnoremap <leader>rt :call RelativeNumberToggle()<cr>
+nnoremap <leader>rt :set rnu!<cr>
 
 " cursor crosshairs
 set cursorline
@@ -261,6 +253,11 @@ set autoindent
 set copyindent
 set smartindent
 
+" reselect block after indenting
+" http://tilvim.com/2013/04/24/reindenting.html
+vnoremap < <gv
+vnoremap > >gv
+
 " tab into new brackets/braces/what have you
 " https://stackoverflow.com/a/14547523
 inoremap {<CR> {<CR>}<C-o>O
@@ -288,11 +285,6 @@ let g:user_emmet_leader_key='<C-e>'
 nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
 " HTML tag closing
 inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
-" and because why not
-iabbrev ldis ಠ_ಠ
-iabbrev lsad ಥ_ಥ
-iabbrev lhap ಥ‿ಥ
-iabbrev lmis ಠ‿ಠ
 
 " multipurpose tab key stolen from Gary Bernhardt's vimrc
 function! InsertTabWrapper()
