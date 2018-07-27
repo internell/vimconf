@@ -34,7 +34,7 @@ set timeout timeoutlen=1500
 nmap <leader>w :w!<CR>
 
 " a nicer return to normal mode
-inoremap jj <Esc>
+inoremap fd <Esc>
 
 " press ; to issue commands in normal mode more lazily
 nnoremap ; :
