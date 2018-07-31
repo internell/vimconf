@@ -138,6 +138,12 @@ nnoremap <leader>4 :colorscheme badwolf<cr>
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
+" set custom jinja2 delimiters
+au FileType jinja syn region jinjaTagBlock matchgroup=jinjaTagDelim start=/\[%-\?/ end=/-\?%\]/ containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaRaw,jinjaString,jinjaNested,jinjaComment
+au FileType jinja syn region jinjaVarBlock matchgroup=jinjaVarDelim start=/\[\[-\?/ end=/-\?\]\]/ containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaRaw,jinjaString,jinjaNested,jinjaComment
+au FileType jinja syn region jinjaRaw matchgroup=jinjaRawDelim start="\[%\s*raw\s*%\]" end="\[%\s*endraw\s*%\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString,jinjaComment
+au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[#" end="#\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString
+
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
