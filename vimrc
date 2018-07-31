@@ -131,9 +131,10 @@ set termencoding=utf-8
 set background=dark
 colorscheme solarized
 nnoremap <leader>1 :colorscheme solarized<cr>
-nnoremap <leader>2 :colorscheme obsidian<cr>
-nnoremap <leader>3 :colorscheme distinguished<cr>
-nnoremap <leader>4 :colorscheme badwolf<cr>
+nnoremap <leader>2 :colorscheme zenburn<cr>
+nnoremap <leader>3 :colorscheme obsidian<cr>
+nnoremap <leader>4 :colorscheme distinguished<cr>
+nnoremap <leader>5 :colorscheme badwolf<cr>
 
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -146,6 +147,11 @@ au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[
 
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+
+" colours for folds
+highlight Folded guibg=grey
+highlight FoldColumn guibg=grey
+
 
 """"""""""""""""
 " INTERFACE / STATUS LINE
@@ -189,6 +195,8 @@ set norelativenumber
 " endfunc
 " nnoremap <leader>rt :call RelativeNumberToggle()<cr>
 nnoremap <leader>rt :set rnu!<cr>
+
+set foldcolumn=3
 
 " cursor crosshairs
 set cursorline
@@ -259,6 +267,8 @@ set autoindent
 set copyindent
 set smartindent
 
+set foldenable
+
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
 vnoremap < <gv
@@ -285,6 +295,11 @@ set formatoptions-=t
 
 " emmet remapping
 let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_settings = {
+    \ 'html.j2' : {
+        \ 'extends' : 'html'
+    \ }
+\ }
 
 " the following stolen remorselessly from Steve Losh's vimrc 
 " fast open
