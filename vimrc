@@ -88,7 +88,7 @@ set hlsearch
 " clear highlights
 nnoremap <leader>h :noh<cr>
 " clear the damn pattern
-:command C let @/=""
+" :command C let @/=""
 
 " highlight line when jumping to next result
 " https://youtu.be/aHm36-na4-4?t=345
@@ -125,11 +125,15 @@ set guifont=Inconsolata\ for\ Powerline:h15
 " let g:Powerline_symbols = 'fancy'
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
-set term=xterm-256color
+" set term=xterm-256color
 set termencoding=utf-8
 
+if !has('gui_running')
+    set t_Co=256
+endif
+
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 nnoremap <leader>1 :colorscheme solarized<cr>
 nnoremap <leader>2 :colorscheme zenburn<cr>
 nnoremap <leader>3 :colorscheme obsidian<cr>
@@ -150,7 +154,7 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " colours for folds
 highlight Folded guibg=grey
-highlight FoldColumn guibg=grey
+" highlight FoldColumn guibg=darkgrey
 
 
 """"""""""""""""
@@ -166,7 +170,6 @@ set laststatus=2
 " set statusline=\ %{v:register}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \           [ 'readonly', 'filename', 'modified' ] ]
@@ -197,6 +200,8 @@ set norelativenumber
 nnoremap <leader>rt :set rnu!<cr>
 
 set foldcolumn=3
+
+set guicursor=a:blinkon0
 
 " cursor crosshairs
 set cursorline
