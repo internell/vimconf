@@ -66,3 +66,7 @@
 	path = bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
     ignore = dirty
+[submodule "bundle/wiki"]
+	path = bundle/wiki
+	url = https://github.com/vimwiki/vimwiki.git
+    ignore = dirty
