@@ -150,7 +150,9 @@ au FileType jinja syn region jinjaRaw matchgroup=jinjaRawDelim start="\[%\s*raw\
 au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[#" end="#\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString
 
 " what use do I even have for modula files
-autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
+
+let g:markdown_fenced_languages = ['html', 'wiki']
 
 " colours for folds
 highlight Folded guibg=grey
@@ -355,3 +357,12 @@ map <leader>g :Goyo<CR>
 let g:goyo_width='80%'
 let g:goyo_height='70%'
 let g:goyo_linenr=1
+
+
+""""""""""""""""
+" VIMWIKI SETTINGS
+""""""""""""""""
+
+let wiki_wmf = {}
+let wiki_wmf.path = '~/vimwiki/wmf/'
+let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'path_html': '~/vimwiki/html/'}]
