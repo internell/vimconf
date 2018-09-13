@@ -211,7 +211,8 @@ set cursorcolumn
 
 set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
 " a nice invisible char toggler
-nmap <leader>l :set list!<CR>
+" nmap <leader>l :set list!<CR>
+nmap <leader>hc :set list!<CR>
 
 
 """"""""
@@ -353,15 +354,17 @@ let g:NERDCustomDelimiters = { 'less': { 'left': '//','right': '' } }
 " GOYO SETTINGS
 """"""""""""""""
 
-map <leader>g :Goyo<CR>
+map <leader>gy :Goyo<CR>
 let g:goyo_width='80%'
-let g:goyo_height='70%'
-let g:goyo_linenr=1
+let g:goyo_height='71%'
+let g:goyo_linenr=3
 
 
 """"""""""""""""
 " VIMWIKI SETTINGS
 """"""""""""""""
+
+nnoremap <C-S-Space> :VimwikiToggleListItem<cr>
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
