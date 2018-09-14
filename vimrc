@@ -48,6 +48,7 @@ nmap <silent> <leader>rr :so $MYVIMRC<CR>
 set visualbell
 set noerrorbells
 
+
 """"""""""""""""
 " FILE HANDLING
 """"""""""""""""
@@ -203,6 +204,8 @@ nnoremap <leader>rt :set rnu!<cr>
 
 set foldcolumn=3
 
+set colorcolumn=140
+
 set guicursor=a:blinkon0
 
 " cursor crosshairs
@@ -270,6 +273,15 @@ set backspace=indent,eol,start
 set tabstop=4 shiftwidth=4 softtabstop=4
 set expandtab
 
+" jinja templates, css and its preprocessors, and js get 2 spaces
+autocmd Filetype jinja setlocal ts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sw=2
+autocmd Filetype css setlocal ts=2 sw=2
+autocmd Filetype less setlocal ts=2 sw=2
+autocmd Filetype scss setlocal ts=2 sw=2
+autocmd Filetype sass setlocal ts=2 sw=2
+autocmd Filetype stylus setlocal ts=2 sw=2
+
 set autoindent
 " copy previous indent on enter
 set copyindent
@@ -296,7 +308,7 @@ set pastetoggle=<F2>
 set wrap
 set linebreak
 set nolist
-set textwidth=0
+set textwidth=140
 set wrapmargin=0
 " don't wrap while typing
 set formatoptions-=t
@@ -311,7 +323,7 @@ let g:user_emmet_settings = {
 
 " the following stolen remorselessly from Steve Losh's vimrc 
 " fast open
-nnoremap <leader>ev :vsplit ~/.vim/vimrc<cr>
+nnoremap <leader>ev ~/.vim/vimrc<cr>
 " HTML tag closing
 inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
 
