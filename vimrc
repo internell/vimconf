@@ -380,4 +380,4 @@ nnoremap <C-S-Space> :VimwikiToggleListItem<cr>
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'path_html': '~/vimwiki/html/'}]
+let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'path_html': '~/vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
