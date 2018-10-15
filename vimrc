@@ -170,15 +170,39 @@ set noshowmode
 " always show
 set laststatus=2
 
+" Recalculates word count after a pause in typing
+" https://stackoverflow.com/a/116454
+let g:word_count="<unknown>"
+fun! WordCount()
+    return g:word_count
+endfun
+fun! UpdateWordCount()
+    let s = system("wc -w ".expand("%p"))
+    let parts = split(s, ' ')
+    if len(parts) > 1
+        let g:word_count = parts[0]
+    endif
+endfun
+augroup WordCounter
+    au! CursorHold * call UpdateWordCount()
+    au! CursorHoldI * call UpdateWordCount()
+augroup END
+" set updatetime=500
+
 " set statusline=\ %{v:register}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \           [ 'readonly', 'filename', 'modified' ] ]
+      \           [ 'readonly', 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'wordcount' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}', 
+      \   'wordcount': '%{WordCount()} words',
       \ }
       \ }
 
@@ -380,4 +404,4 @@ nnoremap <C-S-Space> :VimwikiToggleListItem<cr>
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'path_html': '~/vimwiki/html/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'index': 'index', 'ext': '.md'}]
