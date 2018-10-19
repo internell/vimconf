@@ -338,7 +338,7 @@ set wrapmargin=0
 set formatoptions-=t
 
 " emmet remapping
-let g:user_emmet_leader_key='<C-e>'
+" let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_settings = {
     \ 'html.j2' : {
         \ 'extends' : 'html'
@@ -400,8 +400,7 @@ let g:goyo_linenr=3
 " VIMWIKI SETTINGS
 """"""""""""""""
 
-nnoremap <C-S-Space> :VimwikiToggleListItem<cr>
-
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
 let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'index': 'index', 'ext': '.md'}]
+let g:vimwiki_folding = 'manual'
