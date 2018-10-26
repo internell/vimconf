@@ -400,7 +400,15 @@ let g:goyo_linenr=3
 " VIMWIKI SETTINGS
 """"""""""""""""
 
+let wiki_work = {}
+let wiki_work.path = '~/vimwiki/'
+" let wiki_work.syntax = 'markdown'
+" let wiki_work.ext = '.md'
+
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-let g:vimwiki_list = [wiki_wmf, {'path': '~/vimwiki/', 'index': 'index', 'ext': '.md'}]
+" let wiki_wmf.syntax = 'markdown'
+" let wiki_wmf.ext = '.md'
+
+let g:vimwiki_list = [wiki_work, wiki_wmf]
 let g:vimwiki_folding = 'manual'
