@@ -347,7 +347,7 @@ let g:user_emmet_settings = {
 
 " the following stolen remorselessly from Steve Losh's vimrc 
 " fast open
-nnoremap <leader>ev ~/.vim/vimrc<cr>
+" nnoremap <leader>ev ~/.vim/vimrc<cr>
 " HTML tag closing
 inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
 
@@ -367,6 +367,7 @@ inoremap <s-tab> <c-n>
 augroup textobj_quote
     autocmd!
     autocmd FileType markdown call textobj#quote#init({'educate': 0})
+    autocmd FileType vimwiki call textobj#quote#init({'educate': 1})
     autocmd FileType text call textobj#quote#init()
 augroup END
 
