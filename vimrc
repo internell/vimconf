@@ -22,6 +22,8 @@ filetype plugin on
 filetype indent on
 syntax on
 
+set autoread
+
 " much history
 set history=1000
 
@@ -96,7 +98,7 @@ nnoremap <leader>h :noh<cr>
 nnoremap <silent> n  n:call HLNext(0.4)<cr>
 nnoremap <silent> N  N:call HLNext(0.4)<cr>
 
-function! HLNext (blinktime)
+function! HLNext(blinktime)
     set invcursorline
     redraw
     exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
@@ -346,8 +348,6 @@ let g:user_emmet_settings = {
 \ }
 
 " the following stolen remorselessly from Steve Losh's vimrc 
-" fast open
-" nnoremap <leader>ev ~/.vim/vimrc<cr>
 " HTML tag closing
 inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
 
@@ -413,3 +413,13 @@ let wiki_wmf.path = '~/vimwiki/wmf/'
 
 let g:vimwiki_list = [wiki_work, wiki_wmf]
 let g:vimwiki_folding = 'manual'
+
+" hyperspecific function to send unwanted Nano text into garbage file
+function! DumpRegister(text)
+    let file = '~/vimwiki/wmf/draft/garbage.wiki'
+    let l:winview = winsaveview()
+    exec writefile([a:text], expand(file), "a")
+    windo e
+    call winrestview(l:winview)
+    echom "Garbagified: " . a:text
+endfunction
