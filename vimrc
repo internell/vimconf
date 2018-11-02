@@ -423,3 +423,5 @@ function! DumpRegister(text)
     call winrestview(l:winview)
     echom "Garbagified: " . a:text
 endfunction
+
+command! DumpRegister call DumpRegister()
