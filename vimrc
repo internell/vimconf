@@ -83,7 +83,7 @@ set wildmode=list:longest,full
 
 set wildignore+=.git,.svn
 set wildignore+=*.DS_Store
-" why would I want to open these
+k why would I want to open these
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
 
 " highlight matches
@@ -140,7 +140,7 @@ colorscheme gruvbox
 nnoremap <leader>1 :colorscheme solarized<cr>
 nnoremap <leader>2 :colorscheme zenburn<cr>
 nnoremap <leader>3 :colorscheme obsidian<cr>
-nnoremap <leader>4 :colorscheme distinguished<cr>
+nnoremap <leader>4 :colorscheme boa<cr>
 nnoremap <leader>5 :colorscheme badwolf<cr>
 
 " syntax highlighting for LESS
@@ -424,4 +424,4 @@ function! DumpRegister(text)
     echom "Garbagified: " . a:text
 endfunction
 
-command! DumpRegister call DumpRegister()
+" command! -nargs=1 DumpRegister call DumpRegister(<f-args>)
