@@ -83,7 +83,7 @@ set wildmode=list:longest,full
 
 set wildignore+=.git,.svn
 set wildignore+=*.DS_Store
-k why would I want to open these
+" why would I want to open these
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
 
 " highlight matches
@@ -125,6 +125,19 @@ set magic
 """"""""""""""""
 
 set guifont=Inconsolata\ for\ Powerline:h15
+
+function! Guiswitch(setup)
+    if a:setup ==# "write"
+        set guifont=Pitch-Regular:h15
+        set background=light
+    else
+        set guifont=Inconsolata\ for\ Powerline:h15
+        set background=dark
+    endif
+endfunction
+nnoremap <leader>guw :call Guiswitch("write")<cr>
+nnoremap <leader>gun :call Guiswitch("normal")<cr>
+
 " let g:Powerline_symbols = 'fancy'
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
