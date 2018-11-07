@@ -128,7 +128,7 @@ set guifont=Inconsolata\ for\ Powerline:h15
 
 function! Guiswitch(setup)
     if a:setup ==# "write"
-        set guifont=Pitch-Regular:h15
+        set guifont=Pitch-Medium:h15
         set background=light
     else
         set guifont=Inconsolata\ for\ Powerline:h15
@@ -405,9 +405,11 @@ let g:NERDCustomDelimiters = { 'less': { 'left': '//','right': '' } }
 """"""""""""""""
 
 map <leader>gy :Goyo<CR>
-let g:goyo_width='75%'
-let g:goyo_height='70%'
-let g:goyo_linenr=3
+let g:goyo_width='50%'
+let g:goyo_height='85%'
+let g:goyo_margin_top='3'
+let g:goyo_margin_bottom='7'
+" let g:goyo_linenr=3
 
 
 """"""""""""""""
