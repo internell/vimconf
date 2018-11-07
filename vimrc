@@ -405,8 +405,8 @@ let g:NERDCustomDelimiters = { 'less': { 'left': '//','right': '' } }
 """"""""""""""""
 
 map <leader>gy :Goyo<CR>
-let g:goyo_width='80%'
-let g:goyo_height='71%'
+let g:goyo_width='75%'
+let g:goyo_height='70%'
 let g:goyo_linenr=3
 
 
@@ -437,4 +437,3 @@ function! DumpRegister(text)
     echom "Garbagified: " . a:text
 endfunction
 
-" command! -nargs=1 DumpRegister call DumpRegister(<f-args>)
