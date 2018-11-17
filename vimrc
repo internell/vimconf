@@ -128,7 +128,7 @@ set guifont=Inconsolata\ for\ Powerline:h15
 
 function! Guiswitch(setup)
     if a:setup ==# "write"
-        set guifont=Pitch-Medium:h15
+        set guifont=Pitch-Medium:h13
         set background=light
     else
         set guifont=Inconsolata\ for\ Powerline:h15
