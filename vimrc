@@ -168,7 +168,7 @@ au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
 
-let g:markdown_fenced_languages = ['html', 'wiki']
+" let g:markdown_fenced_languages = ['html', 'wiki']
 
 " colours for folds
 highlight Folded guibg=grey
@@ -416,18 +416,22 @@ let g:goyo_margin_bottom='7'
 " VIMWIKI SETTINGS
 """"""""""""""""
 
+let g:vimwiki_global_ext = 0
+let g:vimwiki_folding = 'manual'
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
 let wiki_work = {}
 let wiki_work.path = '~/vimwiki/'
-" let wiki_work.syntax = 'markdown'
-" let wiki_work.ext = '.md'
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-" let wiki_wmf.syntax = 'markdown'
-" let wiki_wmf.ext = '.md'
+let wiki_wmf.syntax = 'markdown'
+let wiki_wmf.ext = '.md'
+let wiki_wmf.template_path = '~/vimwiki/wmf/templates'
+let wiki_wmf.template_default = 'default'
+let wiki_wmf.template_ext = '.html'
 
 let g:vimwiki_list = [wiki_work, wiki_wmf]
-let g:vimwiki_folding = 'manual'
 
 " hyperspecific function to send unwanted Nano text into garbage file
 function! DumpRegister(text)
