@@ -70,3 +70,7 @@
 	path = bundle/vim-stylus
 	url = https://github.com/iloginow/vim-stylus.git
     ignore = dirty
+[submodule "bundle/vimwiki"]
+	path = bundle/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+    ignore = dirty

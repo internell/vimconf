@@ -425,17 +425,17 @@ let wiki_work.path = '~/vimwiki/'
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-let wiki_wmf.syntax = 'markdown'
+" let wiki_wmf.syntax = 'markdown'
 let wiki_wmf.ext = '.md'
-let wiki_wmf.template_path = '~/vimwiki/wmf/templates'
-let wiki_wmf.template_default = 'default'
-let wiki_wmf.template_ext = '.html'
+" let wiki_wmf.template_path = '~/vimwiki/wmf/templates'
+" let wiki_wmf.template_default = 'default'
+" let wiki_wmf.template_ext = '.html'
 
 let g:vimwiki_list = [wiki_work, wiki_wmf]
 
 " hyperspecific function to send unwanted Nano text into garbage file
 function! DumpRegister(text)
-    let file = '~/vimwiki/wmf/draft/garbage.wiki'
+    let file = '~/vimwiki/wmf/draft/garbage.md'
     let l:winview = winsaveview()
     exec writefile([a:text], expand(file), "a")
     windo e
