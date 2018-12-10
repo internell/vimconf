@@ -422,6 +422,7 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 
 let wiki_work = {}
 let wiki_work.path = '~/vimwiki/'
+let wiki_work.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css'}
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
