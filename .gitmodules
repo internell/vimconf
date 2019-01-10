@@ -74,3 +74,7 @@
 	path = bundle/vim-stylus
 	url = https://github.com/iloginow/vim-stylus.git
     ignore = dirty
+[submodule "bundle/vim-textobj-sentence"]
+	path = bundle/vim-textobj-sentence
+	url = https://github.com/reedes/vim-textobj-sentence.git
+    ignore = dirty
