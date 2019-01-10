@@ -126,6 +126,7 @@ set magic
 
 set guifont=Inconsolata\ for\ Powerline:h15
 
+" probably consider using reedes' vim-thematic if this ends up getting more complicated
 function! Guiswitch(setup)
     if a:setup ==# "write"
         set guifont=Pitch-Medium:h13
@@ -167,6 +168,13 @@ au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[
 
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
+
+augroup textobj_sentence
+    autocmd!
+    autocmd FileType markdown call textobj#sentence#init()
+    autocmd FileType vimwiki call textobj#sentence#init()
+    autocmd FileType text call textobj#sentence#init()
+augroup END
 
 " let g:markdown_fenced_languages = ['html', 'wiki']
 
