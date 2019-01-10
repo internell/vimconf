@@ -166,6 +166,8 @@ au FileType jinja syn region jinjaVarBlock matchgroup=jinjaVarDelim start=/\[\[-
 au FileType jinja syn region jinjaRaw matchgroup=jinjaRawDelim start="\[%\s*raw\s*%\]" end="\[%\s*endraw\s*%\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString,jinjaComment
 au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[#" end="#\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString
 
+au BufNewFile,BufRead *.njk set filetype=jinja
+
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
 
