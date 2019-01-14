@@ -438,7 +438,7 @@ let wiki_work.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'cs
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
-" let wiki_wmf.syntax = 'markdown'
+let wiki_wmf.syntax = 'markdown'
 let wiki_wmf.ext = '.md'
 " let wiki_wmf.template_path = '~/vimwiki/wmf/templates'
 " let wiki_wmf.template_default = 'default'
