@@ -171,6 +171,8 @@ au BufNewFile,BufRead *.njk set filetype=jinja
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
 
+" autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.wiki set filetype=markdown
+
 augroup textobj_sentence
     autocmd!
     autocmd FileType markdown call textobj#sentence#init()
@@ -181,7 +183,7 @@ augroup END
 " let g:markdown_fenced_languages = ['html', 'wiki']
 
 " colours for folds
-highlight Folded guibg=grey
+" highlight Folded guibg=darkgrey
 " highlight FoldColumn guibg=darkgrey
 
 
@@ -251,8 +253,6 @@ set norelativenumber
 " nnoremap <leader>rt :call RelativeNumberToggle()<cr>
 nnoremap <leader>rt :set rnu!<cr>
 
-set foldcolumn=3
-
 set colorcolumn=140
 
 set guicursor=a:blinkon0
@@ -265,6 +265,12 @@ set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
 " a nice invisible char toggler
 " nmap <leader>l :set list!<CR>
 nmap <leader>hc :set list!<CR>
+
+set foldenable
+set foldcolumn=3
+set foldmethod=indent
+set foldlevelstart=99
+
 
 
 """"""""
@@ -335,8 +341,6 @@ set autoindent
 " copy previous indent on enter
 set copyindent
 set smartindent
-
-set foldenable
 
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
@@ -426,8 +430,29 @@ let g:goyo_margin_bottom='7'
 " VIMWIKI SETTINGS
 """"""""""""""""
 
+" https://vi.stackexchange.com/a/15571
+function! MarkdownFolds()
+    let thisline = getline(v:lnum)
+    if match(thisline, '^##') >= 0
+        return ">2"
+    elseif match(thisline, '^#') >= 0
+        return ">1"
+    else
+        return "="
+    endif
+endfunction
+
+function! MarkdownFoldText()
+    let foldsize = (v:foldend-v:foldstart)
+    return getline(v:foldstart). ' ('.foldsize.' lines)'
+endfunction
+
+let g:vimwiki_folding = 'expr'
+autocmd FileType vimwiki setlocal foldexpr=MarkdownFolds()
+autocmd FileType vimwiki setlocal foldtext=MarkdownFoldText()
+
+
 let g:vimwiki_global_ext = 0
-let g:vimwiki_folding = 'manual'
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 let wiki_work = {}
@@ -444,7 +469,12 @@ let wiki_wmf.ext = '.md'
 " let wiki_wmf.template_default = 'default'
 " let wiki_wmf.template_ext = '.html'
 
-let g:vimwiki_list = [wiki_work, wiki_wmf]
+let wiki_lltk = {}
+let wiki_lltk.path = '~/vimwiki/lltk/'
+let wiki_lltk.syntax = 'markdown'
+let wiki_lltk.ext = '.md'
+
+let g:vimwiki_list = [wiki_work, wiki_wmf, wiki_lltk]
 
 " hyperspecific function to send unwanted Nano text into garbage file
 function! DumpRegister(text)
