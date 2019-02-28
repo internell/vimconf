@@ -5,9 +5,10 @@
 " no way that's an exhaustive list though
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC CONFIG
-""""""""""""""""
+""""""""""""""
 
 set nocompatible
 set encoding=utf-8
@@ -51,9 +52,10 @@ set visualbell
 set noerrorbells
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " FILE HANDLING
-""""""""""""""""
+"""""""""""""""
 
 set nobackup
 set nowritebackup
@@ -68,9 +70,10 @@ let g:netrw_liststyle=3
 let g:netrw_browse_split=4
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SEARCH, MATCHING, HIGHLIGHTING
-""""""""""""""""
+""""""""""""""""""""""""""""""""
 
 " finding files - search into subfolders
 " provides tab completion for file-related tasks
@@ -120,11 +123,13 @@ set smartcase
 set magic
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
-""""""""""""""""
+"""""""""""""""""""""""""""""""""""""
 
 set guifont=Inconsolata\ for\ Powerline:h15
+" set guifont=Fantasque\ Sans\ Mono:h15
 
 " probably consider using reedes' vim-thematic if this ends up getting more complicated
 function! Guiswitch(setup)
@@ -171,8 +176,6 @@ au BufNewFile,BufRead *.njk set filetype=jinja
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
 
-" autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.wiki set filetype=markdown
-
 augroup textobj_sentence
     autocmd!
     autocmd FileType markdown call textobj#sentence#init()
@@ -180,16 +183,15 @@ augroup textobj_sentence
     autocmd FileType text call textobj#sentence#init()
 augroup END
 
-" let g:markdown_fenced_languages = ['html', 'wiki']
-
 " colours for folds
 " highlight Folded guibg=darkgrey
 " highlight FoldColumn guibg=darkgrey
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " INTERFACE / STATUS LINE
-""""""""""""""""
+"""""""""""""""""""""""""
 
 " because lightline already displays the mode
 set noshowmode
@@ -242,15 +244,6 @@ set ruler
 
 set number
 set norelativenumber
-" this switcheroo adapted from https://vi.stackexchange.com/a/7
-" function! RelativeNumberToggle()
-    " if(&relativenumber == 1)
-        " set number
-    " else
-        " set relativenumber
-    " endif
-" endfunc
-" nnoremap <leader>rt :call RelativeNumberToggle()<cr>
 nnoremap <leader>rt :set rnu!<cr>
 
 set colorcolumn=140
@@ -263,7 +256,6 @@ set cursorcolumn
 
 set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
 " a nice invisible char toggler
-" nmap <leader>l :set list!<CR>
 nmap <leader>hc :set list!<CR>
 
 set foldenable
@@ -273,10 +265,10 @@ set foldlevelstart=99
 
 
 
-""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NAVIGATION, TABS, WINDOWS, BUFFERS
 " JUST KIDDING ABOUT THE TABS
-""""""""
+""""""""""""""""""""""""""""""""""""
 
 " sets title for terminal window
 set title
@@ -313,9 +305,10 @@ nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " EDITING / TEXT BEHAVIOUR
-""""""""""""""""
+""""""""""""""""""""""""""
 
 " newline in normal mode
 nmap <S-Enter> O<Esc>
@@ -402,9 +395,10 @@ map <silent> <leader>qc <Plug>ReplaceWithCurly
 map <silent> <leader>qs <Plug>ReplaceWithStraight
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COMMENTING
-""""""""""""""""
+""""""""""""
 
 " space after comment delimiter
 let g:NERDSpaceDelims = 1
@@ -414,9 +408,10 @@ let g:NERDCommentEmptyLines = 1
 let g:NERDCustomDelimiters = { 'less': { 'left': '//','right': '' } }
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " GOYO SETTINGS
-""""""""""""""""
+"""""""""""""""
 
 map <leader>gy :Goyo<CR>
 let g:goyo_width='50%'
@@ -426,9 +421,10 @@ let g:goyo_margin_bottom='7'
 " let g:goyo_linenr=3
 
 
-""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIMWIKI SETTINGS
-""""""""""""""""
+""""""""""""""""""
 
 " https://vi.stackexchange.com/a/15571
 function! MarkdownFolds()
@@ -465,9 +461,6 @@ let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
 let wiki_wmf.syntax = 'markdown'
 let wiki_wmf.ext = '.md'
-" let wiki_wmf.template_path = '~/vimwiki/wmf/templates'
-" let wiki_wmf.template_default = 'default'
-" let wiki_wmf.template_ext = '.html'
 
 let wiki_lltk = {}
 let wiki_lltk.path = '~/vimwiki/lltk/'
