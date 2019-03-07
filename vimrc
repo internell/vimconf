@@ -455,7 +455,7 @@ let wiki_work = {}
 let wiki_work.path = '~/vimwiki/'
 let wiki_work.syntax = 'markdown'
 let wiki_work.ext = '.md'
-let wiki_work.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css'}
+let wiki_work.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css', 'python': 'python'}
 
 let wiki_wmf = {}
 let wiki_wmf.path = '~/vimwiki/wmf/'
