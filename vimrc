@@ -443,6 +443,9 @@ function! MarkdownFoldText()
     return getline(v:foldstart). ' ('.foldsize.' lines)'
 endfunction
 
+" when ctrl + space doesn't work
+nnoremap <leader>t :VimwikiToggleListItem<cr>
+
 let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki setlocal foldexpr=MarkdownFolds()
 autocmd FileType vimwiki setlocal foldtext=MarkdownFoldText()
