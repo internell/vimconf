@@ -128,7 +128,9 @@ set magic
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
 """""""""""""""""""""""""""""""""""""
 
-set guifont=Inconsolata\ for\ Powerline:h15
+set guifont=Fira\ Code:h12
+set linespace=2
+" set guifont=Inconsolata\ for\ Powerline:h15
 " set guifont=Fantasque\ Sans\ Mono:h15
 
 " probably consider using reedes' vim-thematic if this ends up getting more complicated
@@ -137,7 +139,8 @@ function! Guiswitch(setup)
         set guifont=Pitch-Medium:h13
         set background=light
     else
-        set guifont=Inconsolata\ for\ Powerline:h15
+        " set guifont=Inconsolata\ for\ Powerline:h15
+        set guifont=Fira\ Code:h12
         set background=dark
     endif
 endfunction
