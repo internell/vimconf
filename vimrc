@@ -62,11 +62,11 @@ set nowritebackup
 set noswapfile
 
 " save on tabbing away
-au FocusLost * :wa
+" au FocusLost * :wa
 
 " use tree mode as default view
 let g:netrw_liststyle=3
-" open file in previous buffer
+" open file in previous window
 let g:netrw_browse_split=4
 
 
@@ -84,7 +84,12 @@ set path+=**
 set wildmenu
 set wildmode=list:longest,full
 
-set wildignore+=.git,.svn
+" prior to setting wildignore
+if exists("g:ctrl_user_command")
+    unlet g:ctrl_user_command
+endif
+
+set wildignore+=*/\.git/*,*/\.svn/*,*/node_modules/*,*/tmp/*,*/vendor/*
 set wildignore+=*.DS_Store
 " why would I want to open these
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
@@ -306,6 +311,20 @@ nnoremap <c-l> <c-w>l
 " cycle through tabs
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
+
+" interactive buffer list
+nmap <leader>b :CtrlPBuffer
+
+" CtrlP settings
+let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
+let g:ctrlp_working_path_mode='ra'
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+
+if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 
 
