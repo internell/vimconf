@@ -473,7 +473,7 @@ function! MarkdownFoldText()
 endfunction
 
 " when ctrl + space doesn't work
-nnoremap <leader>t :VimwikiToggleListItem<cr>
+" nnoremap <leader>t :VimwikiToggleListItem<cr>
 
 let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki setlocal foldexpr=MarkdownFolds()
