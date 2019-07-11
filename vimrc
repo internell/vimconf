@@ -65,9 +65,11 @@ set noswapfile
 " au FocusLost * :wa
 
 " use tree mode as default view
-let g:netrw_liststyle=3
+" let g:netrw_liststyle=3
 " open file in previous window
 let g:netrw_browse_split=4
+" try this as a solution for netrw buffers not wanting to close
+let g:netrw_fastbrowse=0
 
 
 
@@ -127,12 +129,17 @@ set smartcase
 " for regex
 set magic
 
+setglobal complete-=i
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
 """""""""""""""""""""""""""""""""""""
 
+if has('gui_running')
+    set macligatures
+endif
 set guifont=Fira\ Code:h12
 set linespace=2
 " set guifont=Inconsolata\ for\ Powerline:h15
@@ -158,9 +165,9 @@ set fillchars+=stl:\ ,stlnc:\
 " set term=xterm-256color
 set termencoding=utf-8
 
-if !has('gui_running')
-    set t_Co=256
-endif
+" if !has('gui_running')
+    " set t_Co=256
+" endif
 
 set background=dark
 colorscheme gruvbox
@@ -264,7 +271,7 @@ set cursorcolumn
 
 set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
 " a nice invisible char toggler
-nmap <leader>hc :set list!<CR>
+nmap <leader>l :set list!<CR>
 
 set foldenable
 set foldcolumn=3
