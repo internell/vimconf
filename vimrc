@@ -297,6 +297,9 @@ nnoremap <leader>bd :bd<CR>
 " close all buffers
 nnoremap <leader>ba :bufdo bd<CR>
 
+" pull up command-t's buffer quickly
+nnoremap <leader>bb :CommandTBuffer<cr>
+
 " https://stackoverflow.com/a/4468491
 " close current open buffer and open previous buffer in same window
 nnoremap <C-c> :bp\|bd #<cr>
