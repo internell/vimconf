@@ -319,20 +319,6 @@ nnoremap <c-l> <c-w>l
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
 
-" interactive buffer list
-nmap <leader>b :CtrlPBuffer
-
-" CtrlP settings
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_working_path_mode='ra'
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-
-if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
