@@ -82,3 +82,7 @@
 	path = bundle/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
     ignore = dirty
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = https://github.com/wincent/command-t.git
+    ignore = dirty
