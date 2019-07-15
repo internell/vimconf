@@ -281,7 +281,7 @@ set foldlevelstart=99
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NAVIGATION, TABS, WINDOWS, BUFFERS
+" NAVIGATION, TABS, WINDOWS, BUFFERS, SESSIONS
 " JUST KIDDING ABOUT THE TABS
 """"""""""""""""""""""""""""""""""""
 
@@ -322,6 +322,8 @@ nnoremap <c-l> <c-w>l
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
 
+let g:session_directory = '~/.vim/sessions'
+let g:session_autosave = 'yes'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -341,6 +343,7 @@ set expandtab
 
 " jinja templates, css and its preprocessors, and js get 2 spaces
 autocmd Filetype jinja setlocal ts=2 sw=2
+autocmd Filetype html setlocal ts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sw=2
 autocmd Filetype css setlocal ts=2 sw=2
 autocmd Filetype less setlocal ts=2 sw=2
