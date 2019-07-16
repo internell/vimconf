@@ -337,24 +337,25 @@ nmap <CR> o<Esc>
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
 
-" tab management: set to 4 spaces
-set tabstop=4 shiftwidth=4 softtabstop=4
+" indentation management
+set tabstop=2 shiftwidth=2 softtabstop=-1
 set expandtab
-
-" jinja templates, css and its preprocessors, and js get 2 spaces
-autocmd Filetype jinja setlocal ts=2 sw=2
-autocmd Filetype html setlocal ts=2 sw=2
-autocmd Filetype javascript setlocal ts=2 sw=2
-autocmd Filetype css setlocal ts=2 sw=2
-autocmd Filetype less setlocal ts=2 sw=2
-autocmd Filetype scss setlocal ts=2 sw=2
-autocmd Filetype sass setlocal ts=2 sw=2
-autocmd Filetype stylus setlocal ts=2 sw=2
-
 set autoindent
 " copy previous indent on enter
-set copyindent
-set smartindent
+" set copyindent
+" set smartindent
+" set smarttab
+
+" jinja templates, css and its preprocessors, and js get 2 spaces
+" autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
+" autocmd Filetype html setlocal ts=2 sw=2 sts=2
+" autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
+" autocmd Filetype css setlocal ts=2 sw=2 sts=2
+" autocmd Filetype less setlocal ts=2 sw=2 sts=2
+" autocmd Filetype scss setlocal ts=2 sw=2 sts=2
+" autocmd Filetype sass setlocal ts=2 sw=2 sts=2
+" autocmd Filetype stylus setlocal ts=2 sw=2 sts=2
+autocmd Filetype tt2html setlocal tabstop=4 shiftwidth=4
 
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
@@ -363,9 +364,12 @@ vnoremap > >gv
 
 " tab into new brackets/braces/what have you
 " https://stackoverflow.com/a/14547523
-inoremap {<CR> {<CR>}<C-o>O
+" inoremap {<CR> {<CR>}<C-o>O
 " or use ctrl + return: https://stackoverflow.com/a/4477201
 " imap <C-Return> <CR><CR><C-o>k<Tab>
+" or this:
+" https://stackoverflow.com/a/18066591
+inoremap <leader><CR> <CR><C-o>==<C-o>O
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
