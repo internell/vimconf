@@ -369,7 +369,7 @@ vnoremap > >gv
 " imap <C-Return> <CR><CR><C-o>k<Tab>
 " or this:
 " https://stackoverflow.com/a/18066591
-inoremap <leader><CR> <CR><C-o>==<C-o>O
+inoremap <C-Return> <CR><C-o>==<C-o>O
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
