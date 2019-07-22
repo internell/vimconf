@@ -55,18 +55,26 @@ set noerrorbells
 " FILE HANDLING
 """""""""""""""
 
+" begriffs' setup as follows seems sensible
+" protect changes between writes
+set swapfile
+set directory^=~/.vim/swap//
+" protect against crash during writing
+set writebackup
+" but don't persist backup
 set nobackup
-set nowritebackup
-set noswapfile
+" use rename-and-write-new method whenever safe
+set backupcopy=auto
 
-" save on tabbing away
-" au FocusLost * :wa
+" persist undo tree for each file
+set undofile
+set undodir^=~/.vim/undo//
 
 " use tree mode as default view
 " let g:netrw_liststyle=3
 " open file in previous window
 let g:netrw_browse_split=4
-" try this as a solution for netrw buffers not wanting to close
+" solves netrw buffers not wanting to close
 let g:netrw_fastbrowse=0
 
 
