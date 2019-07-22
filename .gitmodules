@@ -58,10 +58,6 @@
 	path = pack/editing/start/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
     ignore = dirty
-[submodule "bundle/vim-jinja2-syntax"]
-	path = pack/syntax/start/vim-jinja2-syntax
-	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
-    ignore = dirty
 [submodule "bundle/gruvbox"]
 	path = pack/theming/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
@@ -94,3 +90,6 @@
 	path = pack/misc/start/vim-misc
 	url = https://github.com/xolox/vim-misc.git
     ignore = dirty
+[submodule "pack/syntax/vim-vue"]
+	path = pack/syntax/start/vim-vue
+	url = https://github.com/posva/vim-vue.git
