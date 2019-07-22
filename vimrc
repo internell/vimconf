@@ -179,16 +179,11 @@ colorscheme gruvbox
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
-" set custom jinja2 delimiters
-au FileType jinja syn region jinjaTagBlock matchgroup=jinjaTagDelim start=/\[%-\?/ end=/-\?%\]/ containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaRaw,jinjaString,jinjaNested,jinjaComment
-au FileType jinja syn region jinjaVarBlock matchgroup=jinjaVarDelim start=/\[\[-\?/ end=/-\?\]\]/ containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaRaw,jinjaString,jinjaNested,jinjaComment
-au FileType jinja syn region jinjaRaw matchgroup=jinjaRawDelim start="\[%\s*raw\s*%\]" end="\[%\s*endraw\s*%\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString,jinjaComment
-au FileType jinja syn region jinjaComment matchgroup=jinjaCommentDelim start="\[#" end="#\]" containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString
-
-au BufNewFile,BufRead *.njk set filetype=jinja
+au BufNewFile,BufRead *.vue setf vue
+au BufNewFile,BufRead *.njk setf jinja
 
 " what use do I even have for modula files
-autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setf markdown
 
 augroup textobj_sentence
     autocmd!
