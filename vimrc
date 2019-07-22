@@ -2,6 +2,7 @@
 " https://gist.github.com/r00k/8fc7e4e9d35ccbfb64aa
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " http://www.terminally-incoherent.com/blog/2012/03/26/how-to-configure-vim/
+" https://begriffs.com/posts/2019-07-19-history-use-vim.html
 " no way that's an exhaustive list though
 
 
@@ -93,15 +94,13 @@ endif
 
 set wildignore+=*/\.git/*,*/\.svn/*,*/node_modules/*,*/tmp/*,*/vendor/*
 set wildignore+=*.DS_Store
-" why would I want to open these
+" why would I want to open these in vim
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
 
 " highlight matches
 set hlsearch
 " clear highlights
 nnoremap <leader>h :noh<cr>
-" clear the damn pattern
-" :command C let @/=""
 
 " highlight line when jumping to next result
 " https://youtu.be/aHm36-na4-4?t=345
@@ -137,9 +136,11 @@ setglobal complete-=i
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
 """""""""""""""""""""""""""""""""""""
 
+" I suspect a Venn diagram showing the intersection of 'Mac users' and 'People who enjoy ligatures' might be just a circle
 if has('gui_running')
     set macligatures
 endif
+
 set guifont=Fira\ Code:h12
 set linespace=2
 " set guifont=Inconsolata\ for\ Powerline:h15
@@ -171,11 +172,12 @@ set termencoding=utf-8
 
 set background=dark
 colorscheme gruvbox
-nnoremap <leader>1 :colorscheme solarized<cr>
-nnoremap <leader>2 :colorscheme zenburn<cr>
-nnoremap <leader>3 :colorscheme obsidian<cr>
-nnoremap <leader>4 :colorscheme boa<cr>
-nnoremap <leader>5 :colorscheme badwolf<cr>
+" when do I ever switch themes with mapped keys? consider removing
+" nnoremap <leader>1 :colorscheme solarized<cr>
+" nnoremap <leader>2 :colorscheme zenburn<cr>
+" nnoremap <leader>3 :colorscheme obsidian<cr>
+" nnoremap <leader>4 :colorscheme boa<cr>
+" nnoremap <leader>5 :colorscheme badwolf<cr>
 
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
@@ -233,8 +235,6 @@ augroup WordCounter
 augroup END
 " set updatetime=500
 
-" set statusline=\ %{v:register}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
-
 let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
@@ -259,6 +259,7 @@ set ruler
 
 set number
 set norelativenumber
+" toggle relative line numbering
 nnoremap <leader>rt :set rnu!<cr>
 
 set colorcolumn=140
@@ -297,7 +298,7 @@ nnoremap <leader>bd :bd<CR>
 " close all buffers
 nnoremap <leader>ba :bufdo bd<CR>
 
-" pull up command-t's buffer quickly
+" pull up command-t's buffer without having to wait for mapped key timeout
 nnoremap <leader>bb :CommandTBuffer<cr>
 
 " https://stackoverflow.com/a/4468491
@@ -343,18 +344,7 @@ set expandtab
 set autoindent
 " copy previous indent on enter
 " set copyindent
-" set smartindent
-" set smarttab
 
-" jinja templates, css and its preprocessors, and js get 2 spaces
-" autocmd Filetype jinja setlocal ts=2 sw=2 sts=2
-" autocmd Filetype html setlocal ts=2 sw=2 sts=2
-" autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
-" autocmd Filetype css setlocal ts=2 sw=2 sts=2
-" autocmd Filetype less setlocal ts=2 sw=2 sts=2
-" autocmd Filetype scss setlocal ts=2 sw=2 sts=2
-" autocmd Filetype sass setlocal ts=2 sw=2 sts=2
-" autocmd Filetype stylus setlocal ts=2 sw=2 sts=2
 autocmd Filetype tt2html setlocal tabstop=4 shiftwidth=4
 
 " reselect block after indenting
@@ -363,11 +353,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 " tab into new brackets/braces/what have you
-" https://stackoverflow.com/a/14547523
-" inoremap {<CR> {<CR>}<C-o>O
-" or use ctrl + return: https://stackoverflow.com/a/4477201
-" imap <C-Return> <CR><CR><C-o>k<Tab>
-" or this:
 " https://stackoverflow.com/a/18066591
 inoremap <C-Return> <CR><C-o>==<C-o>O
 
@@ -385,18 +370,14 @@ set wrapmargin=0
 set formatoptions-=t
 
 " emmet remapping
-" let g:user_emmet_leader_key='<C-e>'
 let g:user_emmet_settings = {
     \ 'html.j2' : {
         \ 'extends' : 'html'
     \ }
 \ }
 
-" the following stolen remorselessly from Steve Losh's vimrc 
-" HTML tag closing
-inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
-
 " multipurpose tab key stolen from Gary Bernhardt's vimrc
+" indent at the beginning of a line, and otherwise do completion
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -443,7 +424,6 @@ let g:goyo_width='50%'
 let g:goyo_height='85%'
 let g:goyo_margin_top='3'
 let g:goyo_margin_bottom='7'
-" let g:goyo_linenr=3
 
 
 
@@ -467,9 +447,6 @@ function! MarkdownFoldText()
     let foldsize = (v:foldend-v:foldstart)
     return getline(v:foldstart). ' ('.foldsize.' lines)'
 endfunction
-
-" when ctrl + space doesn't work
-" nnoremap <leader>t :VimwikiToggleListItem<cr>
 
 let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki setlocal foldexpr=MarkdownFolds()
