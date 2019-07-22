@@ -14,9 +14,6 @@
 set nocompatible
 set encoding=utf-8
 
-" get plugins going
-execute pathogen#infect()
-
 filetype off
 " enable file type detection and do language-dependent indenting
 filetype on
