@@ -70,12 +70,20 @@ set backupcopy=auto
 set undofile
 set undodir^=~/.vim/undo//
 
-" use tree mode as default view
-" let g:netrw_liststyle=3
+let g:netrw_liststyle=1
 " open file in previous window
 let g:netrw_browse_split=4
-" solves netrw buffers not wanting to close
+let g:netrw_winsize=30
+" doesn't actually appear to solve netrw buffers not wanting to close
 let g:netrw_fastbrowse=0
+" I want line numbering damn it
+let g:netrw_bufsettings='noma nomod rnu nowrap ro nobl'
+
+" let g:loaded_netrwPlugin = 1
+" command! -nargs=? -complete=dir Explore Dirvish <args>
+" command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+" command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
+" autocmd FileType netrw setl bufhidden=wipe
 
 
 
@@ -319,6 +327,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+set splitright
+
 " cycle through tabs
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
@@ -346,6 +356,7 @@ set autoindent
 " set copyindent
 
 autocmd Filetype tt2html setlocal tabstop=4 shiftwidth=4
+autocmd Filetype python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
 
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
