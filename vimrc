@@ -247,13 +247,19 @@ let g:lightline = {
       \   'left': [ [ 'mode', 'paste' ],
       \           [ 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
+      \              [ 'windowid', 'percent' ],
       \              [ 'wordcount' ],
       \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'inactive': {
+      \   'left': [ [ 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'windowid', 'percent' ] ]
       \ },
       \ 'component': {
       \   'readonly': '%{&readonly?"":""}', 
       \   'wordcount': '%{WordCount()} words',
+      \   'windowid': '%{winnr()}',
       \ }
       \ }
 
