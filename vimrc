@@ -79,11 +79,10 @@ let g:netrw_fastbrowse=0
 " I want line numbering damn it
 let g:netrw_bufsettings='noma nomod rnu nowrap ro nobl'
 
-" let g:loaded_netrwPlugin = 1
-" command! -nargs=? -complete=dir Explore Dirvish <args>
-" command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
-" command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
-" autocmd FileType netrw setl bufhidden=wipe
+let g:loaded_netrwPlugin = 1
+command! -nargs=? -complete=dir Explore Dirvish <args>
+command! -nargs=? -complete=dir Sexplore belowright split | silent Dirvish <args>
+command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args>
 
 
 

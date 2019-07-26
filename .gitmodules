@@ -21,78 +21,84 @@
 [submodule "bundle/surround"]
 	path = pack/editing/start/surround
 	url = https://github.com/tpope/vim-surround.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vinegar"]
 	path = pack/interface/start/vinegar
 	url = https://github.com/tpope/vim-vinegar.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-perl"]
 	path = pack/syntax/start/vim-perl
-	url = https://github.com/vim-perl/vim-perl.git
-    ignore = dirty
+  url = https://github.com/vim-perl/vim-perl.git
+  ignore = dirty
 [submodule "bundle/vim-javascript"]
 	path = pack/syntax/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/html5"]
 	path = pack/syntax/start/html5
 	url = https://github.com/othree/html5.vim.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/emmet-vim"]
 	path = pack/editing/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-exchange"]
 	path = pack/editing/start/vim-exchange
 	url = https://github.com/tommcdo/vim-exchange.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-autoclose"]
 	path = pack/editing/start/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-textobj-quote"]
 	path = pack/editing/start/vim-textobj-quote
 	url = https://github.com/reedes/vim-textobj-quote.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-textobj-user"]
 	path = pack/editing/start/vim-textobj-user
 	url = https://github.com/kana/vim-textobj-user.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/gruvbox"]
 	path = pack/theming/start/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-stylus"]
 	path = pack/syntax/start/vim-stylus
 	url = https://github.com/iloginow/vim-stylus.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vimwiki"]
 	path = pack/misc/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-textobj-sentence"]
 	path = pack/editing/start/vim-textobj-sentence
 	url = https://github.com/reedes/vim-textobj-sentence.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-bufkill"]
 	path = pack/interface/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/command-t"]
 	path = pack/interface/start/command-t
 	url = https://github.com/wincent/command-t.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-session"]
 	path = pack/interface/start/vim-session
 	url = https://github.com/xolox/vim-session.git
-    ignore = dirty
+  ignore = dirty
 [submodule "bundle/vim-misc"]
 	path = pack/misc/start/vim-misc
 	url = https://github.com/xolox/vim-misc.git
-    ignore = dirty
+  ignore = dirty
 [submodule "pack/syntax/vim-vue"]
 	path = pack/syntax/start/vim-vue
 	url = https://github.com/posva/vim-vue.git
+  ignore = dirty
 [submodule "pack/syntax/start/vim-jinja2"]
 	path = pack/syntax/start/vim-jinja2
 	url = https://github.com/internell/Vim-Jinja2-Syntax.git
+  ignore = dirty
+[submodule "pack/interface/start/vim-dirvish"]
+	path = pack/interface/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+  ignore = dirty
