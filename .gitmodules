@@ -102,3 +102,7 @@
 	path = pack/interface/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
   ignore = dirty
+[submodule "pack/syntax/opt/vim-css-color"]
+	path = pack/syntax/opt/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
+  ignore = dirty
