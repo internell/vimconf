@@ -16,9 +16,7 @@ set encoding=utf-8
 
 filetype off
 " enable file type detection and do language-dependent indenting
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax on
 
 set autoread
