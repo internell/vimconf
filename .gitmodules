@@ -108,6 +108,9 @@
 	ignore = dirty
 [submodule "pack/editing/opt/convert-color-to"]
 	path = pack/editing/opt/convert-color-to
-	ignore = dirty
 	url = https://github.com/amadeus/vim-convert-color-to.git
+	ignore = dirty
+[submodule "pack/interface/start/ack"]
+	path = pack/interface/start/ack
+	url = https://github.com/mileszs/ack.vim.git
 	ignore = dirty
