@@ -155,43 +155,38 @@ if has('gui_running')
     set macligatures
 endif
 
-set guifont=Fira\ Code:h12
-set linespace=2
-" set guifont=Inconsolata\ for\ Powerline:h15
-" set guifont=Fantasque\ Sans\ Mono:h15
+" support me some bloody italics
+set t_ZH=^[[3m
+set t_ZR=^[[23m
 
-" probably consider using reedes' vim-thematic if this ends up getting more complicated
-function! Guiswitch(setup)
-    if a:setup ==# "write"
-        set guifont=Pitch-Medium:h13
-        set background=light
-    else
-        " set guifont=Inconsolata\ for\ Powerline:h15
-        set guifont=Fira\ Code:h12
-        set background=dark
-    endif
-endfunction
-nnoremap <leader>guw :call Guiswitch("write")<cr>
-nnoremap <leader>gun :call Guiswitch("normal")<cr>
+let g:thematic#defaults = {
+  \ 'linespace': 2,
+  \ 'fullscreen': 0,
+  \ 'lines': 80,
+  \ 'columns': 150,
+\ }
+let g:thematic#themes = {
+  \ 'code':   { 'typeface': 'Fira Code',
+              \ 'font-size': 12,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'dark',
+  \ },
+  \ 'write':  { 'typeface': 'Pitch-Medium',
+              \ 'font-size': 13,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'light',
+  \ },
+\ }
+let g:thematic#theme_name = 'code'
 
-" let g:Powerline_symbols = 'fancy'
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 " set term=xterm-256color
 set termencoding=utf-8
 
-" if !has('gui_running')
-    " set t_Co=256
-" endif
-
-set background=dark
-colorscheme gruvbox
-" when do I ever switch themes with mapped keys? consider removing
-" nnoremap <leader>1 :colorscheme solarized<cr>
-" nnoremap <leader>2 :colorscheme zenburn<cr>
-" nnoremap <leader>3 :colorscheme obsidian<cr>
-" nnoremap <leader>4 :colorscheme boa<cr>
-" nnoremap <leader>5 :colorscheme badwolf<cr>
+if !has('gui_running')
+  set t_Co=256
+endif
 
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>

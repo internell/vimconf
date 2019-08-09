@@ -114,3 +114,7 @@
 	path = pack/interface/start/ack
 	url = https://github.com/mileszs/ack.vim.git
 	ignore = dirty
+[submodule "pack/theming/start/vim-thematic"]
+	path = pack/theming/start/vim-thematic
+	url = https://github.com/reedes/vim-thematic.git
+	ignore = dirty
