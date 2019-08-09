@@ -140,6 +140,10 @@ set magic
 
 setglobal complete-=i
 
+" don't automatically jump to the first result
+cnoreabbrev Ack Ack!
+nnoremap <leader>a :Ack!<space>
+
 
 
 """""""""""""""""""""""""""""""""""""
