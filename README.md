@@ -13,3 +13,15 @@ cd ~/.vim
 git submodule init
 git submodule update
 ```
+
+## Set up wikilist.vim
+
+```vim
+let example_wiki = {}
+let example_wiki.path = '~/vimwiki/'
+let example_wiki.syntax = 'markdown'
+let example_wiki.ext = '.md'
+let example_wiki.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css', 'python': 'python'}
+
+let g:vimwiki_list = [example_wiki]
+```

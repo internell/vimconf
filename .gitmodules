@@ -1,5 +1,5 @@
 [submodule "bundle/goyo"]
-	path = pack/interface/start/goyo
+	path = pack/interface/opt/goyo
 	url = https://github.com/junegunn/goyo.vim.git
 	ignore = dirty
 [submodule "bundle/lightline"]

@@ -150,7 +150,8 @@ nnoremap <leader>a :Ack!<space>
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
 """""""""""""""""""""""""""""""""""""
 
-" I suspect a Venn diagram showing the intersection of 'Mac users' and 'People who enjoy ligatures' might be pretty close to a circle
+" I suspect a Venn diagram showing the intersection of 'Mac users' and 
+" 'People who enjoy ligatures' might be pretty close to a circle
 if has('gui_running')
     set macligatures
 endif
@@ -339,6 +340,7 @@ let g:session_directory = '~/.vim/sessions'
 let g:session_autosave = 'yes'
 
 
+
 """"""""""""""""""""""""""
 " EDITING / TEXT BEHAVIOUR
 """"""""""""""""""""""""""
@@ -468,39 +470,19 @@ let g:vimwiki_folding = 'expr'
 autocmd FileType vimwiki setlocal foldexpr=MarkdownFolds()
 autocmd FileType vimwiki setlocal foldtext=MarkdownFoldText()
 
-
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
-let wiki_work = {}
-let wiki_work.path = '~/vimwiki/'
-let wiki_work.syntax = 'markdown'
-let wiki_work.ext = '.md'
-let wiki_work.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css', 'python': 'python', 'perl': 'perl'}
+function! LocalWikiCheck()
+  if filereadable(expand('~/.vim/wikilist.vim'))
+    source ~/.vim/wikilist.vim
+  else
+    echo "Local vimwiki list not found"
+  endif
+endfunction
+call LocalWikiCheck()
 
-let wiki_wmf = {}
-let wiki_wmf.path = '~/vimwiki/wmf/'
-let wiki_wmf.syntax = 'markdown'
-let wiki_wmf.ext = '.md'
-
-let wiki_lltk = {}
-let wiki_lltk.path = '~/vimwiki/lltk/'
-let wiki_lltk.syntax = 'markdown'
-let wiki_lltk.ext = '.md'
-
-let wiki_tftd = {}
-let wiki_tftd.path = '~/vimwiki/tftd-misc/'
-let wiki_tftd.syntax = 'markdown'
-let wiki_tftd.ext = '.md'
-
-let wiki_tcc = {}
-let wiki_tcc.path = '~/vimwiki/tcc/'
-let wiki_tcc.syntax = 'markdown'
-let wiki_tcc.ext = '.md'
-
-let g:vimwiki_list = [wiki_work, wiki_wmf, wiki_lltk, wiki_tftd, wiki_tcc]
-
-" hyperspecific function to send unwanted Nano text into garbage file
+" hyperspecific function to send deleted text into garbage file
 function! DumpRegister(text)
     let file = '~/vimwiki/wmf/draft/garbage.md'
     let l:winview = winsaveview()
