@@ -177,6 +177,11 @@ let g:thematic#themes = {
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },
+  \ 'writeibm': { 'typeface': 'IBM Plex Mono',
+              \ 'font-size': 12,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'light',
+  \ },
 \ }
 let g:thematic#theme_name = 'code'
 
@@ -192,11 +197,11 @@ endif
 " syntax highlighting for LESS
 nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
-au BufNewFile,BufRead *.vue setf vue
-au BufNewFile,BufRead *.njk setf jinja
+autocmd BufNewFile,BufRead *.vue setfiletype vue
+autocmd BufNewFile,BufRead *.njk setfiletype jinja
 
 " what use do I even have for modula files
-autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setf markdown
+autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
 
 augroup textobj_sentence
     autocmd!
@@ -224,19 +229,19 @@ set laststatus=2
 " Recalculates word count after a pause in typing
 " https://stackoverflow.com/a/116454
 let g:word_count="<unknown>"
-fun! WordCount()
+function! WordCount()
     return g:word_count
-endfun
-fun! UpdateWordCount()
+endfunction
+function! UpdateWordCount()
     let s = system("wc -w ".expand("%p"))
     let parts = split(s, ' ')
     if len(parts) > 1
         let g:word_count = parts[0]
     endif
-endfun
+endfunction
 augroup WordCounter
-    au! CursorHold * call UpdateWordCount()
-    au! CursorHoldI * call UpdateWordCount()
+    autocmd! CursorHold * call UpdateWordCount()
+    autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
 " set updatetime=500
 
@@ -317,7 +322,7 @@ nnoremap <leader>bb :CommandTBuffer<cr>
 nnoremap <C-c> :bp\|bd #<cr>
 
 " return to last edit position when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 noremap j gj
 noremap k gk
