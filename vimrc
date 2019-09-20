@@ -493,7 +493,12 @@ let wiki_tftd.path = '~/vimwiki/tftd-misc/'
 let wiki_tftd.syntax = 'markdown'
 let wiki_tftd.ext = '.md'
 
-let g:vimwiki_list = [wiki_work, wiki_wmf, wiki_lltk, wiki_tftd]
+let wiki_tcc = {}
+let wiki_tcc.path = '~/vimwiki/tcc/'
+let wiki_tcc.syntax = 'markdown'
+let wiki_tcc.ext = '.md'
+
+let g:vimwiki_list = [wiki_work, wiki_wmf, wiki_lltk, wiki_tftd, wiki_tcc]
 
 " hyperspecific function to send unwanted Nano text into garbage file
 function! DumpRegister(text)
