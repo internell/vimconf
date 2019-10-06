@@ -152,13 +152,23 @@ nnoremap <leader>a :Ack!<space>
 
 " I suspect a Venn diagram showing the intersection of 'Mac users' and 
 " 'People who enjoy ligatures' might be pretty close to a circle
-if has('gui_running')
-    set macligatures
+if has('gui_macvim')
+  set macligatures
 endif
 
 " support me some bloody italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m
+
+let localfontsize = 12
+
+if has("gui_running")
+  " if has("gui_macvim")
+  if has("gui_gtk2") || has("gui_gtk3")
+    " Linux GUI
+    let localfontsize = 8
+  endif
+endif
 
 let g:thematic#defaults = {
   \ 'linespace': 2,
@@ -168,17 +178,17 @@ let g:thematic#defaults = {
 \ }
 let g:thematic#themes = {
   \ 'code':   { 'typeface': 'Fira Code',
-              \ 'font-size': 12,
+              \ 'font-size': localfontsize,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'dark',
   \ },
   \ 'write':  { 'typeface': 'Pitch-Medium',
-              \ 'font-size': 13,
+              \ 'font-size': localfontsize + 1,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },
   \ 'writeibm': { 'typeface': 'IBM Plex Mono',
-              \ 'font-size': 12,
+              \ 'font-size': localfontsize,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },
@@ -280,6 +290,9 @@ nnoremap <leader>rt :set rnu!<cr>
 
 set colorcolumn=140
 
+set guioptions -=m
+set guioptions -=T
+set guioptions -=r
 set guicursor=a:blinkon0
 
 " cursor crosshairs
