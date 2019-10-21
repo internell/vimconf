@@ -290,10 +290,12 @@ nnoremap <leader>rt :set rnu!<cr>
 
 set colorcolumn=140
 
-set guioptions -=m
-set guioptions -=T
-set guioptions -=r
-set guicursor=a:blinkon0
+if has("gui_running")
+  set guioptions -=m
+  set guioptions -=T
+  set guioptions -=r
+  set guicursor=a:blinkon0
+endif
 
 " cursor crosshairs
 set cursorline
