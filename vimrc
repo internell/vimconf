@@ -161,12 +161,16 @@ set t_ZH=^[[3m
 set t_ZR=^[[23m
 
 let localfontsize = 12
+let localfira = 'Fira Code'
+let localpitch = 'Pitch-Medium'
 
 if has("gui_running")
   " if has("gui_macvim")
   if has("gui_gtk2") || has("gui_gtk3")
     " Linux GUI
     let localfontsize = 8
+    let localfira = 'Fira Code Medium'
+    let localpitch = 'Pitch Light'
   endif
 endif
 
@@ -177,18 +181,18 @@ let g:thematic#defaults = {
   \ 'columns': 150,
 \ }
 let g:thematic#themes = {
-  \ 'code':   { 'typeface': 'Fira Code',
+  \ 'code':   { 'typeface': localfira,
               \ 'font-size': localfontsize,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'dark',
   \ },
-  \ 'write':  { 'typeface': 'Pitch-Medium',
-              \ 'font-size': localfontsize + 1,
+  \ 'write':  { 'typeface': localpitch,
+              \ 'font-size': localfontsize + 2,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },
   \ 'writeibm': { 'typeface': 'IBM Plex Mono',
-              \ 'font-size': localfontsize,
+              \ 'font-size': localfontsize + 1,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },
@@ -356,6 +360,7 @@ nnoremap <leader>) :tabnext<cr>
 
 let g:session_directory = '~/.vim/sessions'
 let g:session_autosave = 'yes'
+let g:session_autoload = 'no'
 
 
 
