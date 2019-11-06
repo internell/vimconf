@@ -93,6 +93,9 @@ command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args
 " https://youtu.be/XA2WjJbmmoM?t=421
 set path+=**
 
+" add fzf directory to runtimepath
+set rtp+=~/.fzf
+
 " display matches for tab completion
 set wildmenu
 set wildmode=list:longest,full
