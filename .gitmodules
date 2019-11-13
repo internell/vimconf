@@ -78,10 +78,6 @@
 	path = pack/interface/start/vim-bufkill
 	url = https://github.com/qpkorr/vim-bufkill.git
 	ignore = dirty
-[submodule "bundle/command-t"]
-	path = pack/interface/start/command-t
-	url = https://github.com/wincent/command-t.git
-	ignore = dirty
 [submodule "bundle/vim-session"]
 	path = pack/interface/start/vim-session
 	url = https://github.com/xolox/vim-session.git
@@ -121,3 +117,4 @@
 [submodule "pack/interface/start/fzf"]
 	path = pack/interface/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
+	ignore = dirty
