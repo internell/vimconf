@@ -93,9 +93,6 @@ command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args
 " https://youtu.be/XA2WjJbmmoM?t=421
 set path+=**
 
-" add fzf directory to runtimepath
-set rtp+=~/.fzf
-
 " display matches for tab completion
 set wildmenu
 set wildmode=list:longest,full
@@ -336,8 +333,26 @@ nnoremap <leader>bd :bd<CR>
 " close all buffers
 nnoremap <leader>ba :bufdo bd<CR>
 
-" pull up command-t's buffer without having to wait for mapped key timeout
-nnoremap <leader>bb :CommandTBuffer<cr>
+" https://github.com/romainl/the-patient-vimmer/blob/gh-pages/2.adoc#switching-buffers
+nnoremap <leader>bb :ls<CR>:b<Space>
+" nnoremap <leader>bb :buffer *
+
+" https://stackoverflow.com/a/30101152
+" close hidden buffers
+function! DeleteHiddenBuffers()
+  let tpbl = []
+  let closed = 0
+  call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+  for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+    if getbufvar(buf, '&mod') == 0
+      silent execute 'bwipeout' buf
+      let closed += 1
+    endif
+  endfor
+  echo "Closed ".closed." hidden buffers"
+endfunction
+
+nnoremap <leader>bc :call DeleteHiddenBuffers()<CR>
 
 " https://stackoverflow.com/a/4468491
 " close current open buffer and open previous buffer in same window
@@ -458,6 +473,45 @@ let g:NERDCustomDelimiters = {
     \ 'less': { 'left': '//', 'right': '' },
     \ 'vue': { 'left': '//', 'right': '' }
 \ }
+
+
+
+""""""""""""""
+" FZF SETTINGS
+""""""""""""""
+
+" add fzf directory to runtimepath
+set rtp+=~/.fzf
+
+" add Wipeouts command from pull request: https://github.com/junegunn/fzf.vim/pull/733
+let g:fzf_wipeout_command = 'bwipeout'
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ 'ctrl-d': 'bwipeout' }
+
+" fzf files in current directory
+nnoremap <leader>f :Files<cr>
+
+" pull up fzf buffer list without having to wait for mapped key timeout
+" nnoremap <leader>bb :Buffers<cr>
+
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 
 
