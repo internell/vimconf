@@ -195,7 +195,7 @@ let g:thematic#themes = {
               \ 'background': 'light',
   \ },
   \ 'writeibm': { 'typeface': 'IBM Plex Mono',
-              \ 'font-size': localfontsize + 1,
+              \ 'font-size': localfontsize,
               \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
   \ },

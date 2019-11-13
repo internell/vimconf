@@ -118,3 +118,6 @@
 	path = pack/theming/start/vim-thematic
 	url = https://github.com/reedes/vim-thematic.git
 	ignore = dirty
+[submodule "pack/interface/start/fzf"]
+	path = pack/interface/start/fzf
+	url = https://github.com/junegunn/fzf.vim.git
