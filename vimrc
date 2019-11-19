@@ -433,6 +433,7 @@ let g:user_emmet_settings = {
         \ 'extends' : 'html'
     \ }
 \ }
+let g:user_emmet_leader_key=','
 
 " multipurpose tab key stolen from Gary Bernhardt's vimrc
 " indent at the beginning of a line, and otherwise do completion
