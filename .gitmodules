@@ -118,3 +118,7 @@
 	path = pack/interface/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
 	ignore = dirty
+[submodule "pack/interface/start/indentline"]
+	path = pack/interface/start/indentline
+	url = https://github.com/Yggdroot/indentLine.git
+	ignore = dirty
