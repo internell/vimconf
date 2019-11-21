@@ -118,11 +118,11 @@ nnoremap <silent> n  n:call HLNext(0.4)<cr>
 nnoremap <silent> N  N:call HLNext(0.4)<cr>
 
 function! HLNext(blinktime)
-    set invcursorline
-    redraw
-    exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
-    set invcursorline
-    redraw
+  set invcursorline
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  set invcursorline
+  redraw
 endfunction
 
 " highlight matching brackets
@@ -146,90 +146,6 @@ nnoremap <leader>a :Ack!<space>
 
 
 
-"""""""""""""""""""""""""""""""""""""
-" COLOURS, FONTS, SYNTAX HIGHLIGHTING
-"""""""""""""""""""""""""""""""""""""
-
-" I suspect a Venn diagram showing the intersection of 'Mac users' and 
-" 'People who enjoy ligatures' might be pretty close to a circle
-if has('gui_macvim')
-  set macligatures
-endif
-
-" support me some bloody italics
-set t_ZH=^[[3m
-set t_ZR=^[[23m
-
-let localfontsize = 12
-let localfira = 'Fira Code'
-let localpitch = 'Pitch-Medium'
-
-if has("gui_running")
-  " if has("gui_macvim")
-  if has("gui_gtk2") || has("gui_gtk3")
-    " Linux GUI
-    let localfontsize = 8
-    let localfira = 'Fira Code Medium'
-    let localpitch = 'Pitch Light'
-  endif
-endif
-
-let g:thematic#defaults = {
-  \ 'linespace': 2,
-  \ 'fullscreen': 0,
-  \ 'lines': 80,
-  \ 'columns': 150,
-\ }
-let g:thematic#themes = {
-  \ 'code':   { 'typeface': localfira,
-              \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
-              \ 'background': 'dark',
-  \ },
-  \ 'write':  { 'typeface': localpitch,
-              \ 'font-size': localfontsize + 2,
-              \ 'colorscheme': 'gruvbox',
-              \ 'background': 'light',
-  \ },
-  \ 'writeibm': { 'typeface': 'IBM Plex Mono',
-              \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
-              \ 'background': 'light',
-  \ },
-\ }
-let g:thematic#theme_name = 'code'
-
-set t_Co=256
-set fillchars+=stl:\ ,stlnc:\
-" set term=xterm-256color
-set termencoding=utf-8
-
-if !has('gui_running')
-  set t_Co=256
-endif
-
-" syntax highlighting for LESS
-nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
-autocmd BufNewFile,BufRead *.vue setfiletype vue
-autocmd BufNewFile,BufRead *.njk setfiletype jinja
-
-" what use do I even have for modula files
-autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
-
-augroup textobj_sentence
-    autocmd!
-    autocmd FileType markdown call textobj#sentence#init()
-    autocmd FileType vimwiki call textobj#sentence#init()
-    autocmd FileType text call textobj#sentence#init()
-augroup END
-
-" colours for folds
-" highlight Folded guibg=darkgrey
-" highlight FoldColumn guibg=darkgrey
-
-
-
 """""""""""""""""""""""""
 " INTERFACE / STATUS LINE
 """""""""""""""""""""""""
@@ -244,41 +160,40 @@ set laststatus=2
 " https://stackoverflow.com/a/116454
 let g:word_count="<unknown>"
 function! WordCount()
-    return g:word_count
+  return g:word_count
 endfunction
 function! UpdateWordCount()
-    let s = system("wc -w ".expand("%p"))
-    let parts = split(s, ' ')
-    if len(parts) > 1
-        let g:word_count = parts[0]
-    endif
+  let s = system("wc -w ".expand("%p"))
+  let parts = split(s, ' ')
+  if len(parts) > 1
+    let g:word_count = parts[0]
+  endif
 endfunction
 augroup WordCounter
-    autocmd! CursorHold * call UpdateWordCount()
-    autocmd! CursorHoldI * call UpdateWordCount()
+  autocmd! CursorHold * call UpdateWordCount()
+  autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
 " set updatetime=500
 
 let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \           [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'windowid', 'percent' ],
-      \              [ 'wordcount' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-      \ },
-      \ 'inactive': {
-      \   'left': [ [ 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'windowid', 'percent' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&readonly?"":""}', 
-      \   'wordcount': '%{WordCount()} words',
-      \   'windowid': '%{winnr()}',
-      \ }
-      \ }
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \           [ 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'windowid', 'percent' ],
+  \              [ 'wordcount' ],
+  \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+  \ },
+  \ 'inactive': {
+  \   'left': [ [ 'filename', 'modified' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'windowid', 'percent' ] ]
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&readonly?"":""}', 
+  \   'wordcount': '%{WordCount()} words',
+  \   'windowid': '%{winnr()}',
+  \ } }
 
 " height of the command bar
 set cmdheight=2
@@ -378,6 +293,10 @@ set splitright
 nnoremap <leader>( :tabprev<cr>
 nnoremap <leader>) :tabnext<cr>
 
+" set sessionoptions=blank,buffers,curdir,folds,help,options,tabpages,winsize,winpos,terminal
+
+let g:screen_size_restore_pos = 1
+let g:screen_size_by_vim_instance = 1
 let g:session_directory = '~/.vim/sessions'
 let g:session_autosave = 'yes'
 let g:session_autoload = 'no'
@@ -429,35 +348,119 @@ set formatoptions-=t
 
 " emmet remapping
 let g:user_emmet_settings = {
-    \ 'html.j2' : {
-        \ 'extends' : 'html'
-    \ }
-\ }
+  \ 'html.j2' : {
+  \ 'extends' : 'html'
+  \ } }
 let g:user_emmet_leader_key=','
 
 " multipurpose tab key stolen from Gary Bernhardt's vimrc
 " indent at the beginning of a line, and otherwise do completion
 function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
 " smart quote stuff with vim-textobj-quote
 augroup textobj_quote
-    autocmd!
-    autocmd FileType markdown call textobj#quote#init({'educate': 0})
-    autocmd FileType vimwiki call textobj#quote#init({'educate': 1})
-    autocmd FileType text call textobj#quote#init()
+  autocmd!
+  autocmd FileType markdown call textobj#quote#init({'educate': 0})
+  autocmd FileType vimwiki call textobj#quote#init({'educate': 1})
+  autocmd FileType text call textobj#quote#init()
 augroup END
 
 map <silent> <leader>qc <Plug>ReplaceWithCurly
 map <silent> <leader>qs <Plug>ReplaceWithStraight
+
+
+
+"""""""""""""""""""""""""""""""""""""
+" COLOURS, FONTS, SYNTAX HIGHLIGHTING
+"""""""""""""""""""""""""""""""""""""
+
+" I suspect a Venn diagram showing the intersection of 'Mac users' and 
+" 'People who enjoy ligatures' might be pretty close to a circle
+if has('gui_macvim')
+  set macligatures
+endif
+
+" support me some bloody italics
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+
+let localfontsize = 12
+let localfira = 'Fira Code'
+let localpitch = 'Pitch-Medium'
+
+let g:gruvbox_contrast_dark = 'soft'
+" let g:gruvbox_contrast_light = 'soft'
+
+if has("gui_running")
+  " if has("gui_macvim")
+  if has("gui_gtk2") || has("gui_gtk3")
+    " Linux GUI
+    let localfontsize = 8
+    let localfira = 'Fira Code Medium'
+    let localpitch = 'Pitch Light'
+  endif
+endif
+
+let g:thematic#defaults = {
+  \ 'linespace': 2,
+  \ 'fullscreen': 0,
+  \ 'lines': 85,
+  \ 'columns': 160 }
+let g:thematic#themes = {
+  \ 'code':   { 'typeface': localfira,
+              \ 'font-size': localfontsize,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'dark',
+  \ },
+  \ 'write':  { 'typeface': localpitch,
+              \ 'font-size': localfontsize + 2,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'light',
+  \ },
+  \ 'writeibm': { 'typeface': 'IBM Plex Mono',
+              \ 'font-size': localfontsize,
+              \ 'colorscheme': 'gruvbox',
+              \ 'background': 'light',
+  \ } }
+let g:thematic#theme_name = 'code'
+
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+" set term=xterm-256color
+set termencoding=utf-8
+
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" syntax highlighting for LESS
+nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+autocmd BufNewFile,BufRead *.vue setfiletype vue
+autocmd BufNewFile,BufRead *.njk setfiletype jinja
+
+" what use do I even have for modula files
+autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
+
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType vimwiki call textobj#sentence#init()
+  autocmd FileType text call textobj#sentence#init()
+augroup END
+
+" colours for folds
+" highlight Folded guibg=darkgrey
+" highlight FoldColumn guibg=darkgrey
 
 
 
@@ -471,9 +474,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
 " this appears to be the best way to customize comments
 let g:NERDCustomDelimiters = {
-    \ 'less': { 'left': '//', 'right': '' },
-    \ 'vue': { 'left': '//', 'right': '' }
-\ }
+  \ 'less': { 'left': '//', 'right': '' },
+  \ 'vue': { 'left': '//', 'right': '' } }
 
 
 
@@ -534,19 +536,19 @@ let g:goyo_margin_bottom='7'
 
 " https://vi.stackexchange.com/a/15571
 function! MarkdownFolds()
-    let thisline = getline(v:lnum)
-    if match(thisline, '^##') >= 0
-        return ">2"
-    elseif match(thisline, '^#') >= 0
-        return ">1"
-    else
-        return "="
-    endif
+  let thisline = getline(v:lnum)
+  if match(thisline, '^##') >= 0
+    return ">2"
+  elseif match(thisline, '^#') >= 0
+    return ">1"
+  else
+    return "="
+  endif
 endfunction
 
 function! MarkdownFoldText()
-    let foldsize = (v:foldend-v:foldstart)
-    return getline(v:foldstart). ' ('.foldsize.' lines)'
+  let foldsize = (v:foldend-v:foldstart)
+  return getline(v:foldstart). ' ('.foldsize.' lines)'
 endfunction
 
 let g:vimwiki_folding = 'expr'
@@ -559,19 +561,19 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown'
 function! LocalWikiCheck()
   if filereadable(expand('~/.vim/wikilist.vim'))
     source ~/.vim/wikilist.vim
-  else
-    echo "Local vimwiki list not found"
+  " else
+    " echo "Local vimwiki list not found"
   endif
 endfunction
 call LocalWikiCheck()
 
 " hyperspecific function to send deleted text into garbage file
 function! DumpRegister(text)
-    let file = '~/vimwiki/wmf/draft/garbage.md'
-    let l:winview = winsaveview()
-    exec writefile([a:text], expand(file), "a")
-    windo e
-    call winrestview(l:winview)
-    echom "Garbagified: " . a:text
+  let file = '~/vimwiki/wmf/draft/garbage.md'
+  let l:winview = winsaveview()
+  exec writefile([a:text], expand(file), "a")
+  windo e
+  call winrestview(l:winview)
+  echom "Garbagified: " . a:text
 endfunction
 
