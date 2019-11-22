@@ -404,7 +404,7 @@ if has("gui_running")
   " if has("gui_macvim")
   if has("gui_gtk2") || has("gui_gtk3")
     " Linux GUI
-    let localfontsize = 8
+    let localfontsize = 9
     let localfira = 'Fira Code Medium'
     let localpitch = 'Pitch Light'
   endif
