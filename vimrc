@@ -355,7 +355,6 @@ let g:user_emmet_settings = {
   \ 'html.j2' : {
   \ 'extends' : 'html'
   \ } }
-let g:user_emmet_leader_key='<C-M>'
 
 " multipurpose tab key stolen from Gary Bernhardt's vimrc
 " indent at the beginning of a line, and otherwise do completion
