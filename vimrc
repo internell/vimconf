@@ -322,8 +322,7 @@ set autoindent
 " set copyindent
 
 " don't let indentLine override conceal setting
-let g:indentLine_setConceal = 0
-" autocmd Filetype vimwiki setlocal :IndentLinesDisable
+autocmd Filetype vimwiki setlocal concealcursor="" conceallevel=0
 
 autocmd Filetype tt2html setlocal tabstop=4 shiftwidth=4
 autocmd Filetype python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
