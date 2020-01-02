@@ -456,6 +456,7 @@ nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 autocmd BufNewFile,BufRead *.vue setfiletype vue
 autocmd BufNewFile,BufRead *.njk setfiletype jinja
+autocmd BufNewFile,BufRead *.svelte setfiletype svelte
 
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
