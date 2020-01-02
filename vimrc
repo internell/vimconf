@@ -322,10 +322,14 @@ set autoindent
 " set copyindent
 
 " don't let indentLine override conceal setting
-autocmd Filetype vimwiki setlocal concealcursor="" conceallevel=0
+augroup indentLine_disable
+  autocmd!
+  autocmd FileType vimwiki :IndentLinesDisable
+  autocmd FileType vimwiki setlocal concealcursor="" conceallevel=0
+augroup END
 
-autocmd Filetype tt2html setlocal tabstop=4 shiftwidth=4
-autocmd Filetype python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
+autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
+autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
 
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
