@@ -329,6 +329,7 @@ augroup indentLine_disable
 augroup END
 
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
+autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
 
 " reselect block after indenting
