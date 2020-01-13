@@ -321,6 +321,10 @@ set autoindent
 " copy previous indent on enter
 " set copyindent
 
+" remap splitjoin to avoid vim-surround collisions
+nnoremap cJ :SplitjoinJoin<cr>
+nnoremap cC :SplitjoinSplit<cr>
+
 " don't let indentLine override conceal setting
 augroup indentLine_disable
   autocmd!

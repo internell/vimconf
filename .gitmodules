@@ -130,3 +130,7 @@
 	path = pack/syntax/start/vim-svelte-plugin
 	url = https://github.com/leafOfTree/vim-svelte-plugin.git
 	ignore = dirty
+[submodule "pack/editing/start/splitjoin"]
+	path = pack/editing/start/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim
+	ignore = dirty
