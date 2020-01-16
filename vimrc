@@ -517,8 +517,8 @@ let g:fzf_action = {
 " fzf files in current directory
 nnoremap <leader>f :Files<cr>
 
-" pull up fzf buffer list without having to wait for mapped key timeout
-" nnoremap <leader>bb :Buffers<cr>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
 
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
