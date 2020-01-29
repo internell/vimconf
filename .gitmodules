@@ -134,3 +134,7 @@
 	path = pack/editing/start/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim
 	ignore = dirty
+[submodule "pack/misc/start/vim-startify"]
+	path = pack/misc/start/vim-startify
+	url = https://github.com/mhinz/vim-startify.git
+	ignore = dirty

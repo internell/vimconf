@@ -229,6 +229,17 @@ set foldcolumn=3
 set foldmethod=indent
 set foldlevelstart=99
 
+let g:startify_custom_header = ''
+let g:startify_session_dir='~/.vim/sessions'
+let g:startify_session_persistence = 0
+let g:startify_session_delete_buffers = 0
+let g:startify_lists = [
+      \ { 'type': 'sessions', 'header': ['   Sessions'] },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks'] },
+      \ { 'type': 'dir', 'header': ['   Directory '. getcwd()] },
+      \ { 'type': 'files', 'header': ['   Files'] }
+      \ ]
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -238,6 +249,7 @@ set foldlevelstart=99
 
 " sets title for terminal window
 set title
+" set titlestring = %{fnamemodify(this_session, ':t')}
 
 " allow buffers in background, don't limit to 1 file per window/split
 set hidden
@@ -328,6 +340,8 @@ nnoremap cC :SplitjoinSplit<cr>
 " don't let indentLine override conceal setting
 augroup indentLine_disable
   autocmd!
+  autocmd FileType startify :IndentLinesDisable
+  autocmd FileType startify setlocal concealcursor="" conceallevel=0
   autocmd FileType vimwiki :IndentLinesDisable
   autocmd FileType vimwiki setlocal concealcursor="" conceallevel=0
 augroup END
@@ -382,11 +396,22 @@ augroup textobj_quote
   autocmd!
   autocmd FileType markdown call textobj#quote#init({'educate': 0})
   autocmd FileType vimwiki call textobj#quote#init({'educate': 1})
+  autocmd FileType jinja call textobj#quote#init({'educate': 0})
+  autocmd FileType tt2html call textobj#quote#init({'educate': 0})
   autocmd FileType text call textobj#quote#init()
 augroup END
 
+let g:textobj#quote#matchit = 1
+
 map <silent> <leader>qc <Plug>ReplaceWithCurly
 map <silent> <leader>qs <Plug>ReplaceWithStraight
+
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType vimwiki call textobj#sentence#init()
+  autocmd FileType text call textobj#sentence#init()
+augroup END
 
 
 
@@ -417,7 +442,7 @@ if has("gui_running")
     " Linux GUI
     let localfontsize = 9
     let localfira = 'Fira Code Medium'
-    let localpitch = 'Pitch Light'
+    " let localpitch = 'Pitch Light'
   endif
 endif
 
@@ -425,38 +450,34 @@ let g:thematic#defaults = {
   \ 'linespace': 2,
   \ 'fullscreen': 0,
   \ 'lines': 85,
-  \ 'columns': 160 }
+  \ 'columns': 160
+  \ }
 let g:thematic#themes = {
-  \ 'code':   { 'typeface': localfira,
+  \ 'fira':   { 'typeface': localfira,
               \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
               \ 'background': 'dark',
-              \ 'columns': 330,
+              \ 'colorscheme': 'gruvbox'
+  \ },
+  \ 'code':   { 'typeface': 'JetBrains Mono Regular',
+              \ 'font-size': localfontsize,
+              \ 'background': 'dark',
+              \ 'colorscheme': 'gruvbox'
   \ },
   \ 'edit':   { 'typeface': 'IBM Plex Mono',
               \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
               \ 'background': 'dark',
-              \ 'columns': 330,
-  \ },
-  \ 'jb':     { 'typeface': 'JetBrains Mono Regular',
-              \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
-              \ 'background': 'dark',
-              \ 'columns': 330,
-  \ },
-  \ 'cond':   { 'typeface': 'Iosevka',
-              \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
-              \ 'background': 'dark',
-              \ 'columns': 380,
+              \ 'colorscheme': 'gruvbox'
   \ },
   \ 'write':  { 'typeface': 'IBM Plex Mono',
               \ 'font-size': localfontsize,
-              \ 'colorscheme': 'gruvbox',
               \ 'background': 'light',
+              \ 'colorscheme': 'gruvbox'
   \ } }
 let g:thematic#theme_name = 'code'
+
+nnoremap <leader>gwn :set columns=120<cr>
+nnoremap <leader>gwr :set columns=160<cr>
+nnoremap <leader>gww :set columns=340<cr>
 
 set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
@@ -476,13 +497,6 @@ autocmd BufNewFile,BufRead *.svelte setfiletype svelte
 
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
-
-augroup textobj_sentence
-  autocmd!
-  autocmd FileType markdown call textobj#sentence#init()
-  autocmd FileType vimwiki call textobj#sentence#init()
-  autocmd FileType text call textobj#sentence#init()
-augroup END
 
 " colours for folds
 " highlight Folded guibg=darkgrey
