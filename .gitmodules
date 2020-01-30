@@ -138,3 +138,27 @@
 	path = pack/misc/start/vim-startify
 	url = https://github.com/mhinz/vim-startify.git
 	ignore = dirty
+[submodule "pack/misc/start/vim-orgmode"]
+	path = pack/misc/start/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
+	ignore = dirty
+[submodule "pack/editing/start/vim-speeddating"]
+	path = pack/editing/start/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+	ignore = dirty
+[submodule "pack/interface/start/utl.vim"]
+	path = pack/interface/start/utl.vim
+	url = https://github.com/vim-scripts/utl.vim.git
+	ignore = dirty
+[submodule "pack/interface/start/calendar-vim"]
+	path = pack/interface/start/calendar-vim
+	url = https://github.com/mattn/calendar-vim.git
+	ignore = dirty
+[submodule "pack/interface/start/tagbar"]
+	path = pack/interface/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
+	ignore = dirty
+[submodule "pack/interface/start/taglist.vim"]
+	path = pack/interface/start/taglist.vim
+	url = https://github.com/vim-scripts/taglist.vim.git
+	ignore = dirty
