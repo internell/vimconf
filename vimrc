@@ -203,7 +203,7 @@ set showcmd
 set ruler
 
 set number
-set norelativenumber
+set relativenumber
 " toggle relative line numbering
 nnoremap <leader>rt :set rnu!<cr>
 
