@@ -162,3 +162,7 @@
 	path = pack/interface/start/taglist.vim
 	url = https://github.com/vim-scripts/taglist.vim.git
 	ignore = dirty
+[submodule "pack/misc/start/vim-zettel"]
+	path = pack/misc/start/vim-zettel
+	url = https://github.com/michal-h21/vim-zettel.git
+	ignore = dirty
