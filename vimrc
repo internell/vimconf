@@ -626,8 +626,8 @@ endfunction
 """"""""""""
 
 let g:zettel_format = "%Y%m%d-%H%M%S"
+let g:zettel_options = [{"front_matter": {"kennung": "", "tags": ""}}]
 let g:zettel_fzf_command = "rg"
-let g:zettel_options = [{}, {"front_matter": {"tags": ""}}]
 
 
 """"""""""""""""""
