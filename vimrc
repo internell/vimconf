@@ -625,36 +625,16 @@ endfunction
 " VIM-ZETTEL
 """"""""""""
 
-let g:zettel_format = "%Y%m%d-%H%M%S"
-let g:zettel_options = [{"front_matter": {"kennung": "", "tags": ""}}]
-let g:zettel_fzf_command = "rg"
+let g:zettel_format = '%Y%m%d-%H%M%S'
+let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
+" let g:zettel_fzf_command = 'rg'
 
 nnoremap <leader>zn :ZettelNew 
 
 
-""""""""""""""""""
-" ORGMODE NONSENSE
-""""""""""""""""""
+""""""""""""""""
+" NOTATIONAL-FZF
+""""""""""""""""
 
-let maplocalleader = "\<space>"
-
-let g:org_agenda_files = ['~/org/index.org']
-let g:org_indent = 1
-let g:org_heading_shade_leading_stars = 0
-let g:org_todo_keywords = [
-      \'TODO',
-      \'FEEDBACK',
-      \'WAITING',
-      \'|',
-      \'DONE', 
-      \'DELEGATED'
-      \]
-let g:org_todo_keyword_faces = [
-      \['TODO', 'red'],
-      \['FEEDBACK', 'red'],
-      \['WAITING', 'yellow'],
-      \['DONE', 'green'],
-      \['DELEGATED', 'green']
-      \]
-
-let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
+let g:nv_search_paths = ['~/zettelkasten']
+let g:nv_wrap_preview_text = 1
