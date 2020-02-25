@@ -540,9 +540,15 @@ let g:fzf_action = {
 
 " fzf files in current directory
 nnoremap <leader>f :Files<cr>
+" fzf ripgrep lines in current directory
+nnoremap <leader>rg :Rg<cr>
 
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
+  \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 
+  \ 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), 0)
 
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
@@ -627,7 +633,7 @@ endfunction
 
 let g:zettel_format = '%Y%m%d-%H%M%S'
 let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
-" let g:zettel_fzf_command = 'rg'
+let g:zettel_fzf_command = 'rg'
 
 nnoremap <leader>zn :ZettelNew 
 
