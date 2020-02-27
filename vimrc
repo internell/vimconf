@@ -31,6 +31,9 @@ set timeout timeoutlen=1500
 
 " fast saving
 nmap <leader>w :w!<CR>
+" binding this to saving too, instead of pulling up default vimwiki,
+" so that I don’t lose my mind if I hit w again before the timeout
+nnoremap <leader>ww :w<CR>
 
 " a nicer return to normal mode
 inoremap jj <Esc>
@@ -547,8 +550,7 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 
-  \ 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), 0)
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
 
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
@@ -582,6 +584,9 @@ let g:goyo_margin_bottom='7'
 """"""""""""""""""
 " VIMWIKI SETTINGS
 """"""""""""""""""
+
+" Make this non-horrible for my setup, instead of <leader>ww
+nmap <leader>vi <Plug>VimwikiIndex
 
 " https://vi.stackexchange.com/a/15571
 function! MarkdownFolds()
@@ -633,9 +638,9 @@ endfunction
 
 let g:zettel_format = '%Y%m%d-%H%M%S'
 let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
-let g:zettel_fzf_command = 'rg'
+let g:zettel_fzf_command = 'ag'
 
-nnoremap <leader>zn :ZettelNew 
+nnoremap <leader>zn :ZettelNew
 
 
 """"""""""""""""
@@ -644,3 +649,7 @@ nnoremap <leader>zn :ZettelNew
 
 let g:nv_search_paths = ['~/zettelkasten']
 let g:nv_wrap_preview_text = 1
+" let g:nv_keymap = {
+  " \ }
+
+nnoremap <leader>nv :NV<CR>
