@@ -535,11 +535,21 @@ set rtp+=~/.fzf
 " add Wipeouts command from pull request: https://github.com/junegunn/fzf.vim/pull/733
 let g:fzf_wipeout_command = 'bwipeout'
 
+" include ability to add fzf results to quickfix list
+" https://github.com/junegunn/fzf.vim/issues/185#issuecomment-322120216
+function! BuildQuickfixList(lines)
+  echom a:lines
+  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+  copen
+  cc
+endfunction
+
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-d': 'bwipeout' }
+  \ 'ctrl-d': 'bwipeout',
+  \ 'ctrl-q': function('BuildQuickfixList')}
 
 " fzf files in current directory
 nnoremap <leader>f :Files<cr>
@@ -550,7 +560,7 @@ command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
 
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
+  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
 
 let g:fzf_colors = {
   \ 'fg':      ['fg', 'Normal'],
