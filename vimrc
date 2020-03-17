@@ -645,12 +645,13 @@ endfunction
 """"""""""""
 " VIM-ZETTEL
 """"""""""""
+" For my purposes, feels more annoying than worthwhile at the moment
 
-let g:zettel_format = '%Y%m%d-%H%M%S'
-let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
-let g:zettel_fzf_command = 'ag'
-
-nnoremap <leader>zn :ZettelNew
+" let g:zettel_format = '%Y%m%d-%H%M%S'
+" let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
+" let g:zettel_fzf_command = 'ag'
+" 
+" nnoremap <leader>zn :ZettelNew
 
 
 """"""""""""""""

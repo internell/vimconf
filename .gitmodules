@@ -142,10 +142,6 @@
 	path = pack/editing/start/vim-speeddating
 	url = https://github.com/tpope/vim-speeddating.git
 	ignore = dirty
-[submodule "pack/misc/start/vim-zettel"]
-	path = pack/misc/start/vim-zettel
-	url = https://github.com/michal-h21/vim-zettel.git
-	ignore = dirty
 [submodule "pack/interface/start/notational-fzf-vim"]
 	path = pack/interface/start/notational-fzf-vim
 	url = https://github.com/alok/notational-fzf-vim.git
