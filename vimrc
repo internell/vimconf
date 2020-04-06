@@ -642,23 +642,11 @@ function! DumpRegister(text)
 endfunction
 
 
-""""""""""""
-" VIM-ZETTEL
-""""""""""""
-" For my purposes, feels more annoying than worthwhile at the moment
-
-" let g:zettel_format = '%Y%m%d-%H%M%S'
-" let g:zettel_options = [{'front_matter': {'kennung': '', 'tags': ''}}]
-" let g:zettel_fzf_command = 'ag'
-" 
-" nnoremap <leader>zn :ZettelNew
-
-
 """"""""""""""""
 " NOTATIONAL-FZF
 """"""""""""""""
 
-let g:nv_search_paths = ['~/zettelkasten']
+let g:nv_search_paths = ['~/sennhalpa']
 let g:nv_wrap_preview_text = 1
 " let g:nv_keymap = {
   " \ }
