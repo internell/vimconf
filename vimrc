@@ -352,6 +352,7 @@ augroup indentLine_disable
   autocmd FileType json setlocal concealcursor="" conceallevel=0
 augroup END
 
+autocmd FileType json setlocal concealcursor="" conceallevel=0
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
 autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
@@ -621,6 +622,8 @@ autocmd FileType vimwiki setlocal foldtext=MarkdownFoldText()
 
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_cb_checked = 1
 
 function! LocalWikiCheck()
   if filereadable(expand('~/.vim/wikilist.vim'))
@@ -632,14 +635,14 @@ endfunction
 call LocalWikiCheck()
 
 " hyperspecific function to send deleted text into garbage file
-function! DumpRegister(text)
-  let file = '~/vimwiki/wmf/draft/garbage.md'
-  let l:winview = winsaveview()
-  exec writefile([a:text], expand(file), "a")
-  windo e
-  call winrestview(l:winview)
-  echom "Garbagified: " . a:text
-endfunction
+" function! DumpRegister(text)
+  " let file = '~/vimwiki/wmf/draft/garbage.md'
+  " let l:winview = winsaveview()
+  " exec writefile([a:text], expand(file), "a")
+  " windo e
+  " call winrestview(l:winview)
+  " echom "Garbagified: " . a:text
+" endfunction
 
 
 """"""""""""""""
