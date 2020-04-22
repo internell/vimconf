@@ -50,6 +50,9 @@ nmap <silent> <leader>rr :so $MYVIMRC<CR>
 set visualbell
 set noerrorbells
 
+" don't redraw during a macro
+set lazyredraw
+
 
 
 """""""""""""""
@@ -325,6 +328,9 @@ let g:session_autoload = 'no'
 " newline in normal mode
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc>
+
+" make s, ss, S behave like d, dd, D without saving cut text to register
+nnoremap s "_d
 
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
