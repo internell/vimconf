@@ -356,9 +356,10 @@ augroup indentLine_disable
   autocmd FileType org :IndentLinesDisable
   autocmd FileType org setlocal concealcursor="" conceallevel=0
   autocmd FileType json setlocal concealcursor="" conceallevel=0
+  autocmd FileType json :IndentLinesDisable
 augroup END
 
-autocmd FileType json setlocal concealcursor="" conceallevel=0
+autocmd FileType json set concealcursor="" conceallevel=0
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
 autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
