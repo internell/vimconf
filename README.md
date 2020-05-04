@@ -17,6 +17,8 @@ git submodule update
 ## Set up wikilist.vim
 
 ```vim
+let g:nv_search_paths = ['~/vimwiki']
+
 let example_wiki = {}
 let example_wiki.path = '~/vimwiki/'
 let example_wiki.syntax = 'markdown'

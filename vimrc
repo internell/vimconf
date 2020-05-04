@@ -656,7 +656,8 @@ call LocalWikiCheck()
 " NOTATIONAL-FZF
 """"""""""""""""
 
-let g:nv_search_paths = ['~/sennhalpa']
+" try moving this to wikilist.vim
+" let g:nv_search_paths = ['~/sennhalpa']
 let g:nv_wrap_preview_text = 1
 " let g:nv_keymap = {
   " \ }
