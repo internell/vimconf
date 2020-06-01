@@ -677,6 +677,10 @@ call LocalWikiCheck()
 if executable('fzf') ==# 1 && executable('rg') ==#1
   silent! packadd notational-fzf-vim
 
+  if !filereadable(expand('~/.vim/wikilist.vim'))
+    let g:nv_search_paths = ['~']
+  endif
+
   let g:nv_wrap_preview_text = 1
 
   nnoremap <leader>nv :NV<CR>
