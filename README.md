@@ -14,10 +14,17 @@ git submodule init
 git submodule update
 ```
 
+## Worthy dependencies
+
+- [fzf](https://github.com/junegunn/fzf#installation)
+- [ack](https://beyondgrep.com/install/)
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+
+
 ## Set up wikilist.vim
 
 ```vim
-let g:nv_search_paths = ['~/vimwiki']
+let g:nv_search_paths = ['~/whatever']
 
 let example_wiki = {}
 let example_wiki.path = '~/vimwiki/'

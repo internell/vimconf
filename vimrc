@@ -3,7 +3,7 @@
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " http://www.terminally-incoherent.com/blog/2012/03/26/how-to-configure-vim/
 " https://begriffs.com/posts/2019-07-19-history-use-vim.html
-" no way that's an exhaustive list though
+" no way that’s an exhaustive list though
 
 
 
@@ -14,7 +14,6 @@
 set nocompatible
 set encoding=utf-8
 
-" filetype off
 " enable file type detection and do language-dependent indenting
 filetype plugin indent on
 syntax on
@@ -25,13 +24,13 @@ set autoread
 set history=1000
 
 let mapleader = ","
-" makes mapleader accessible within functions
+" make mapleader globally available, i.e. accessible within functions
 let g:mapleader = ","
 set timeout timeoutlen=1500
 
 " fast saving
 nmap <leader>w :w!<CR>
-" binding this to saving too, instead of pulling up default vimwiki,
+" binding this to writing too, instead of pulling up default vimwiki,
 " so that I don’t lose my mind if I hit w again before the timeout
 nnoremap <leader>ww :w<CR>
 
@@ -50,7 +49,7 @@ nmap <silent> <leader>rr :so $MYVIMRC<CR>
 set visualbell
 set noerrorbells
 
-" don't redraw during a macro
+" don’t redraw during a macro
 set lazyredraw
 
 
@@ -59,13 +58,13 @@ set lazyredraw
 " FILE HANDLING
 """""""""""""""
 
-" begriffs' setup as follows seems sensible
+" begriffs’ setup as follows seems sensible
 " protect changes between writes
 set swapfile
 set directory^=~/.vim/swap//
 " protect against crash during writing
 set writebackup
-" but don't persist backup
+" but don’t persist backup
 set nobackup
 " use rename-and-write-new method whenever safe
 set backupcopy=auto
@@ -78,7 +77,7 @@ let g:netrw_liststyle=1
 " open file in previous window
 let g:netrw_browse_split=4
 let g:netrw_winsize=30
-" doesn't actually appear to solve netrw buffers not wanting to close
+" doesn’t actually appear to solve netrw buffers not wanting to close
 let g:netrw_fastbrowse=0
 " I want line numbering damn it
 let g:netrw_bufsettings='noma nomod rnu nowrap ro nobl'
@@ -146,9 +145,13 @@ set magic
 
 setglobal complete-=i
 
-" don't automatically jump to the first result
-cnoreabbrev Ack Ack!
-nnoremap <leader>a :Ack!<space>
+" have we ack?
+if executable('ack') ==# 1
+  silent! packadd ack
+  " okay, don’t automatically jump to the first result
+  cnoreabbrev Ack Ack!
+  nnoremap <leader>a :Ack!<space>
+endif
 
 
 
@@ -179,7 +182,6 @@ augroup WordCounter
   autocmd! CursorHold * call UpdateWordCount()
   autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
-" set updatetime=500
 
 let g:lightline = {
   \ 'active': {
@@ -257,7 +259,7 @@ let g:startify_lists = [
 set title
 " set titlestring = %{fnamemodify(this_session, ':t')}
 
-" allow buffers in background, don't limit to 1 file per window/split
+" allow buffers in background, don’t limit to 1 file per window/split
 set hidden
 
 " close the current buffer
@@ -346,7 +348,7 @@ set autoindent
 nnoremap cJ :SplitjoinJoin<cr>
 nnoremap cC :SplitjoinSplit<cr>
 
-" don't let indentLine override conceal setting
+" don’t let indentLine override conceal setting
 augroup indentLine_disable
   autocmd!
   autocmd FileType startify :IndentLinesDisable
@@ -359,7 +361,9 @@ augroup indentLine_disable
   autocmd FileType json :IndentLinesDisable
 augroup END
 
+" no seriously STOP IT
 autocmd FileType json set concealcursor="" conceallevel=0
+
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
 autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
@@ -383,7 +387,7 @@ set linebreak
 set nolist
 set textwidth=140
 set wrapmargin=0
-" don't wrap while typing
+" don’t wrap while typing
 set formatoptions-=t
 
 " emmet remapping
@@ -392,7 +396,7 @@ let g:user_emmet_settings = {
   \ 'extends' : 'html'
   \ } }
 
-" multipurpose tab key stolen from Gary Bernhardt's vimrc
+" multipurpose tab key stolen from Gary Bernhardt’s vimrc
 " indent at the beginning of a line, and otherwise do completion
 function! InsertTabWrapper()
   let col = col('.') - 1
@@ -406,6 +410,7 @@ inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 
 " smart quote stuff with vim-textobj-quote
+" https://github.com/reedes/vim-textobj-quote
 augroup textobj_quote
   autocmd!
   autocmd FileType markdown call textobj#quote#init({'educate': 0})
@@ -433,8 +438,8 @@ augroup END
 " COLOURS, FONTS, SYNTAX HIGHLIGHTING
 """""""""""""""""""""""""""""""""""""
 
-" I suspect a Venn diagram showing the intersection of 'Mac users' and 
-" 'People who enjoy ligatures' might be pretty close to a circle
+" I suspect a Venn diagram showing the intersection of ‘Mac users’ and 
+" ‘People who enjoy ligatures’ might be pretty close to a circle
 if has('gui_macvim')
   set macligatures
 endif
@@ -537,53 +542,64 @@ let g:NERDCustomDelimiters = {
 " FZF SETTINGS
 """"""""""""""
 
-" add fzf directory to runtimepath
-set rtp+=~/.fzf
+" first... check if fzf is available
+if executable('fzf') ==#1
+  silent! packadd fzf
 
-" add Wipeouts command from pull request: https://github.com/junegunn/fzf.vim/pull/733
-let g:fzf_wipeout_command = 'bwipeout'
+  " add fzf directory to runtimepath
+  set rtp+=~/.fzf
 
-" include ability to add fzf results to quickfix list
-" https://github.com/junegunn/fzf.vim/issues/185#issuecomment-322120216
-function! BuildQuickfixList(lines)
-  echom a:lines
-  call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
-  copen
-  cc
-endfunction
+  " add Wipeouts command from pull request: https://github.com/junegunn/fzf.vim/pull/733
+  let g:fzf_wipeout_command = 'bwipeout'
 
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit',
-  \ 'ctrl-d': 'bwipeout',
-  \ 'ctrl-q': function('BuildQuickfixList')}
+  " include ability to add fzf results to quickfix list
+  " https://github.com/junegunn/fzf.vim/issues/185#issuecomment-322120216
+  function! BuildQuickfixList(lines)
+    echom a:lines
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+  endfunction
 
-" fzf files in current directory
-nnoremap <leader>f :Files<cr>
-" fzf ripgrep lines in current directory
-nnoremap <leader>rg :Rg<cr>
+  let g:fzf_action = {
+    \ 'ctrl-t': 'tab split',
+    \ 'ctrl-s': 'split',
+    \ 'ctrl-v': 'vsplit',
+    \ 'ctrl-d': 'bwipeout',
+    \ 'ctrl-q': function('BuildQuickfixList')}
 
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
+  " fzf files in current directory
+  nnoremap <leader>f :Files<cr>
 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
+  command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
 
-let g:fzf_colors = {
-  \ 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+  let g:fzf_colors = {
+    \ 'fg':      ['fg', 'Normal'],
+    \ 'bg':      ['bg', 'Normal'],
+    \ 'hl':      ['fg', 'Comment'],
+    \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+    \ 'hl+':     ['fg', 'Statement'],
+    \ 'info':    ['fg', 'PreProc'],
+    \ 'border':  ['fg', 'Ignore'],
+    \ 'prompt':  ['fg', 'Conditional'],
+    \ 'pointer': ['fg', 'Exception'],
+    \ 'marker':  ['fg', 'Keyword'],
+    \ 'spinner': ['fg', 'Label'],
+    \ 'header':  ['fg', 'Comment'] }
+endif
+
+" these need both fzf and rg installed
+if executable('fzf') ==# 1 && executable('rg') ==#1
+
+  " fzf ripgrep lines in current directory
+  nnoremap <leader>rg :Rg<cr>
+
+  command! -bang -nargs=* Rg
+    \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
+
+endif
 
 
 
@@ -652,14 +668,17 @@ call LocalWikiCheck()
 " endfunction
 
 
+
 """"""""""""""""
 " NOTATIONAL-FZF
 """"""""""""""""
 
-" try moving this to wikilist.vim
-" let g:nv_search_paths = ['~/sennhalpa']
-let g:nv_wrap_preview_text = 1
-" let g:nv_keymap = {
-  " \ }
+" these also need both fzf and rg installed
+if executable('fzf') ==# 1 && executable('rg') ==#1
+  silent! packadd notational-fzf-vim
 
-nnoremap <leader>nv :NV<CR>
+  let g:nv_wrap_preview_text = 1
+
+  nnoremap <leader>nv :NV<CR>
+
+endif

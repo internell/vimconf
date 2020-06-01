@@ -107,7 +107,7 @@
 	url = https://github.com/amadeus/vim-convert-color-to.git
 	ignore = dirty
 [submodule "pack/interface/start/ack"]
-	path = pack/interface/start/ack
+	path = pack/interface/opt/ack
 	url = https://github.com/mileszs/ack.vim.git
 	ignore = dirty
 [submodule "pack/theming/start/vim-thematic"]
@@ -115,7 +115,7 @@
 	url = https://github.com/reedes/vim-thematic.git
 	ignore = dirty
 [submodule "pack/interface/start/fzf"]
-	path = pack/interface/start/fzf
+	path = pack/interface/opt/fzf
 	url = https://github.com/junegunn/fzf.vim.git
 	ignore = dirty
 [submodule "pack/interface/start/indentline"]
@@ -143,6 +143,6 @@
 	url = https://github.com/tpope/vim-speeddating.git
 	ignore = dirty
 [submodule "pack/interface/start/notational-fzf-vim"]
-	path = pack/interface/start/notational-fzf-vim
+	path = pack/interface/opt/notational-fzf-vim
 	url = https://github.com/alok/notational-fzf-vim.git
 	ignore = dirty
