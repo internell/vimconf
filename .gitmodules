@@ -150,3 +150,7 @@
 	path = pack/interface/start/vim-tradewinds
 	url = https://github.com/andymass/vim-tradewinds.git
 	ignore = dirty
+[submodule "pack/interface/opt/codi"]
+	path = pack/interface/opt/codi
+	url = https://github.com/metakirby5/codi.vim.git
+	ignore = dirty
