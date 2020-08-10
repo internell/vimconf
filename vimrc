@@ -1,9 +1,9 @@
-" borrows from: 
+" Borrows from: 
 " https://gist.github.com/r00k/8fc7e4e9d35ccbfb64aa
 " https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim
 " http://www.terminally-incoherent.com/blog/2012/03/26/how-to-configure-vim/
 " https://begriffs.com/posts/2019-07-19-history-use-vim.html
-" no way that’s an exhaustive list though
+" No way that’s an exhaustive list though
 
 
 
@@ -357,7 +357,7 @@ augroup indentLine_disable
   autocmd FileType vimwiki setlocal concealcursor="" conceallevel=0
   autocmd FileType org :IndentLinesDisable
   autocmd FileType org setlocal concealcursor="" conceallevel=0
-  autocmd FileType json setlocal concealcursor="" conceallevel=0
+  " autocmd FileType json setlocal concealcursor="" conceallevel=0
   autocmd FileType json :IndentLinesDisable
 augroup END
 
@@ -686,52 +686,3 @@ if executable('fzf') ==# 1 && executable('rg') ==#1
   nnoremap <leader>nv :NV<CR>
 
 endif
-
-
-
-" Trying out an interesting window split function:
-" https://github.com/vim/vim/pull/3220#issuecomment-538651011
-" function! SplitMove(dir) abort
-  " let l:pos = win_screenpos(0)
-  " let l:target = winnr(a:dir)
-" 
-  " if l:target == 0 || l:target == winnr()
-    " execute 'wincmd' toupper(a:dir)
-    " return
-  " endif
-" 
-  " let l:targetid = win_getid(l:target)
-  " let l:targetpos = win_screenpos(l:target)
-" 
-  " " Try to place the new window in a natural position:
-  " " - If the current window is at least as big as the target, compare
-  " "   the cursor position and the midpoint of the target window
-  " " - If the current window is smaller than the target, compare the
-  " "   midpoints of the current and target windows
-  " if a:dir ==# 'h' || a:dir ==# 'l'
-    " if l:pos[0] +
-          " \ (winheight(0) >= winheight(target)
-          " \   ? winline()-1 : winheight(0) / 2)
-          " \ <= l:targetpos[0] + winheight(target) / 2
-      " let l:flags = { 'rightbelow': 0 }
-    " else
-      " let l:flags = { 'rightbelow': 1 }
-    " endif
-  " else
-    " if l:pos[1] +
-          " \ (winwidth(0) >= winwidth(target)
-          " \   ? wincol()-1 : winwidth(0) / 2)
-          " \ <= l:targetpos[1] + winwidth(target) / 2
-      " let l:flags = { 'rightbelow': 0, 'vertical': 1 }
-    " else
-      " let l:flags = { 'rightbelow': 1, 'vertical': 1 }
-    " endif
-  " endif
-" 
-  " call win_splitmove(winnr(), l:target, l:flags)
-" endfunction
-" 
-" nnoremap <silent> <c-w>gh :<c-u>call SplitMove('h')<cr>
-" nnoremap <silent> <c-w>gj :<c-u>call SplitMove('j')<cr>
-" nnoremap <silent> <c-w>gk :<c-u>call SplitMove('k')<cr>
-" nnoremap <silent> <c-w>gl :<c-u>call SplitMove('l')<cr>
