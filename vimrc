@@ -307,6 +307,11 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" don't bother loading trade winds without the necessary functions available
+if has('win_screenpos') || has('nvim_win_get_position')
+  silent! packadd vim-tradewinds
+endif
+
 set splitright
 
 " cycle through tabs

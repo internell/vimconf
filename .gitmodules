@@ -147,7 +147,7 @@
 	url = https://github.com/alok/notational-fzf-vim.git
 	ignore = dirty
 [submodule "pack/interface/start/vim-tradewinds"]
-	path = pack/interface/start/vim-tradewinds
+	path = pack/interface/opt/vim-tradewinds
 	url = https://github.com/andymass/vim-tradewinds.git
 	ignore = dirty
 [submodule "pack/interface/opt/codi"]
