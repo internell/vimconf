@@ -110,7 +110,8 @@ endif
 set wildignore+=*/\.git/*,*/\.svn/*,*/node_modules/*,*/tmp/*,*/vendor/*
 set wildignore+=*.DS_Store
 " why would I want to open these in vim
-set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
+" actually maybe I want to batch rename them sometimes
+" set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.zip,*.dmg,*.pkg
 
 " highlight matches
 set hlsearch
@@ -521,6 +522,15 @@ autocmd BufNewFile,BufRead *.svelte setfiletype svelte
 
 " what use do I even have for modula files
 autocmd BufNewFile,BufFilePre,BufRead,BufReadPost *.md setfiletype markdown
+
+if exists("did_load_csvfiletype")
+  finish
+endif
+let did_load_csvfiletype=1
+
+augroup filetypedetect
+  au! BufRead,BufNewFile *.csv,*.dat setfiletype csv
+augroup END
 
 " colours for folds
 " highlight Folded guibg=darkgrey
