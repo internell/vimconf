@@ -354,26 +354,6 @@ set autoindent
 nnoremap cJ :SplitjoinJoin<cr>
 nnoremap cC :SplitjoinSplit<cr>
 
-" don’t let indentLine override conceal setting
-augroup indentLine_disable
-  autocmd!
-  autocmd FileType startify :IndentLinesDisable
-  autocmd FileType startify setlocal concealcursor="" conceallevel=0
-  autocmd FileType vimwiki :IndentLinesDisable
-  autocmd FileType vimwiki setlocal concealcursor="" conceallevel=0
-  autocmd FileType org :IndentLinesDisable
-  autocmd FileType org setlocal concealcursor="" conceallevel=0
-  " autocmd FileType json setlocal concealcursor="" conceallevel=0
-  autocmd FileType json :IndentLinesDisable
-augroup END
-
-" no seriously STOP IT
-autocmd FileType json set concealcursor="" conceallevel=0
-
-autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
-autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
-autocmd FileType python setlocal equalprg=/usr/local/Cellar/pyenv/shims/reindent
-
 " reselect block after indenting
 " http://tilvim.com/2013/04/24/reindenting.html
 vnoremap < <gv
@@ -438,6 +418,24 @@ augroup textobj_sentence
   autocmd FileType text call textobj#sentence#init()
 augroup END
 
+" don’t let indentLine override conceal setting
+augroup indentLine_disable
+  autocmd!
+  autocmd FileType startify :IndentLinesDisable
+  autocmd FileType startify setlocal concealcursor="" conceallevel=0
+  autocmd FileType vimwiki :IndentLinesDisable
+  autocmd FileType vimwiki setlocal concealcursor="" conceallevel=0
+  autocmd FileType org :IndentLinesDisable
+  autocmd FileType org setlocal concealcursor="" conceallevel=0
+  " autocmd FileType json setlocal concealcursor="" conceallevel=0
+  autocmd FileType json :IndentLinesDisable
+augroup END
+
+" no seriously STOP IT
+autocmd FileType json set concealcursor="" conceallevel=0
+
+autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
+autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 
 
 """""""""""""""""""""""""""""""""""""
@@ -692,7 +690,7 @@ call LocalWikiCheck()
 if executable('fzf') ==# 1 && executable('rg') ==#1
   silent! packadd notational-fzf-vim
 
-  if !filereadable(expand('~/.vim/wikilist.vim'))
+  if !exists('g:nv_search_paths')
     let g:nv_search_paths = ['~']
   endif
 

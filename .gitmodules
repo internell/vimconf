@@ -154,3 +154,7 @@
 	path = pack/interface/opt/codi
 	url = https://github.com/metakirby5/codi.vim.git
 	ignore = dirty
+[submodule "pack/syntax/start/vim-python-pep8-indent"]
+	path = pack/syntax/start/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
+	ignore = dirty
