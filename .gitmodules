@@ -162,3 +162,7 @@
 	path = pack/syntax/opt/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars.git
 	ignore = dirty
+[submodule "pack/theming/start/lightline-gruvbox"]
+	path = pack/theming/start/lightline-gruvbox
+	url = https://github.com/shinchu/lightline-gruvbox.vim.git
+	ignore = dirty
