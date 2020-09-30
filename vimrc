@@ -204,6 +204,27 @@ let g:lightline = {
   \   'windowid': '%{winnr()}',
   \ } }
 
+" as outlined by :h lightline-problem-13
+augroup LightlineColorscheme
+  autocmd!
+  autocmd ColorScheme * call LightlineUpdate()
+augroup END
+function! LightlineUpdate()
+  if !exists('g:loaded_lightline')
+    return
+  endif
+  try
+    if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow\|gruvbox'
+      let g:lightline.colorscheme =
+            \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+      call lightline#init()
+      call lightline#colorscheme()
+      call lightline#update()
+    endif
+  catch
+  endtry
+endfunction
+
 " height of the command bar
 set cmdheight=2
 " display incomplete commands
@@ -457,7 +478,7 @@ let localfira = 'Fira Code'
 let localpitch = 'Pitch-Medium'
 
 let g:gruvbox_contrast_dark = 'soft'
-" let g:gruvbox_contrast_light = 'soft'
+let g:gruvbox_contrast_light = 'medium'
 
 if has("gui_running")
   " if has("gui_macvim")
@@ -484,6 +505,11 @@ let g:thematic#themes = {
   \ 'code':   { 'typeface': 'JetBrains Mono Regular',
               \ 'font-size': localfontsize,
               \ 'background': 'dark',
+              \ 'colorscheme': 'gruvbox'
+  \ },
+  \ 'codelight': { 'typeface': 'JetBrains Mono Medium',
+              \ 'font-size': localfontsize,
+              \ 'background': 'light',
               \ 'colorscheme': 'gruvbox'
   \ },
   \ 'edit':   { 'typeface': 'IBM Plex Mono',
