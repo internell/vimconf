@@ -168,13 +168,13 @@ set laststatus=2
 
 " Recalculates word count after a pause in typing
 " https://stackoverflow.com/a/116454
-let g:word_count="<unknown>"
+let g:word_count="??"
 function! WordCount()
   return g:word_count
 endfunction
 function! UpdateWordCount()
   let s = system("wc -w ".expand("%p"))
-  let parts = split(s, ' ')
+  let parts = split(s, '')
   if len(parts) > 1
     let g:word_count = parts[0]
   endif
@@ -183,6 +183,12 @@ augroup WordCounter
   autocmd! CursorHold * call UpdateWordCount()
   autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
+
+" let g:airline_detect_whitespace = 0
+" let g:airline#extensions#fzf#enabled = 1
+" 
+" call airline#parts#define_function('wordcount', 'WordCount')
+" let g:airline_section_y = airline#section#create_right(['wordcount', 'words'])
 
 let g:lightline = {
   \ 'active': {
