@@ -702,6 +702,22 @@ function! LocalWikiCheck()
 endfunction
 call LocalWikiCheck()
 
+" modify the gruvbox theme in:
+" gruvbox/colors/gruvbox.vim line 1309
+" hi! link markdownH1 GruvboxRedBold
+" hi! link markdownH2 GruvboxAquaBold
+" hi! link markdownH3 GruvboxYellowBold
+" hi! link markdownH4 GruvboxPurpleBold
+" hi! link markdownH5 GruvboxGreenBold
+" hi! link markdownH6 GruvboxBlueBold
+
+highlight! link VimwikiHeader1 markdownH1
+highlight! link VimwikiHeader2 markdownH2
+highlight! link VimwikiHeader3 markdownH3
+highlight! link VimwikiHeader4 markdownH4
+highlight! link VimwikiHeader5 markdownH5
+highlight! link VimwikiHeader6 markdownH6
+
 " hyperspecific function to send deleted text into garbage file
 " function! DumpRegister(text)
   " let file = '~/vimwiki/wmf/draft/garbage.md'
