@@ -10,10 +10,6 @@
 	path = pack/editing/start/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
 	ignore = dirty
-[submodule "bundle/vim-colors-solarized"]
-	path = pack/theming/start/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
-	ignore = dirty
 [submodule "bundle/vim-less"]
 	path = pack/syntax/start/vim-less
 	url = https://github.com/groenewege/vim-less.git
