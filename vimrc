@@ -475,6 +475,10 @@ if has('gui_macvim')
   set macligatures
 endif
 
+if has('gui_running')
+  set notermguicolors
+endif
+
 " support me some bloody italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m
@@ -528,7 +532,7 @@ let g:thematic#themes = {
               \ 'background': 'light',
               \ 'colorscheme': 'gruvbox'
   \ } }
-let g:thematic#theme_name = 'code'
+let g:thematic#theme_name = 'codelight'
 
 nnoremap <leader>gwn :set columns=120<cr>
 nnoremap <leader>gwr :set columns=160<cr>
@@ -642,7 +646,8 @@ if executable('fzf') ==# 1 && executable('rg') ==#1
   nnoremap <leader>rg :Rg<cr>
 
   command! -bang -nargs=* Rg
-    \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
+    \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+    " \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
 
 endif
 
