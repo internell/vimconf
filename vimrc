@@ -532,7 +532,12 @@ let g:thematic#themes = {
               \ 'background': 'light',
               \ 'colorscheme': 'gruvbox'
   \ } }
-let g:thematic#theme_name = 'codelight'
+
+if has('gui_running')
+  let g:thematic#theme_name = 'codelight'
+else
+  let g:thematic#theme_name = 'code'
+endif
 
 nnoremap <leader>gwn :set columns=120<cr>
 nnoremap <leader>gwr :set columns=160<cr>
