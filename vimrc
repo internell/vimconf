@@ -184,52 +184,62 @@ augroup WordCounter
   autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
 
-" let g:airline_detect_whitespace = 0
-" let g:airline#extensions#fzf#enabled = 1
-" 
-" call airline#parts#define_function('wordcount', 'WordCount')
-" let g:airline_section_y = airline#section#create_right(['wordcount', 'words'])
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_detect_whitespace = 0
+ 
+" if has("gui_running")
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" let g:airline_symbols.readonly = ''
+" endif
 
-let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \           [ 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'windowid', 'percent' ],
-  \              [ 'wordcount' ],
-  \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-  \ },
-  \ 'inactive': {
-  \   'left': [ [ 'filename', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'windowid', 'percent' ] ]
-  \ },
-  \ 'component': {
-  \   'readonly': '%{&readonly?"":""}', 
-  \   'wordcount': '%{WordCount()} words',
-  \   'windowid': '%{winnr()}',
-  \ } }
+function! AirlineInit()
+  call airline#parts#define_function('wordcount', 'WordCount')
+  let g:airline_section_y = airline#section#create_right(['wordcount', 'words'])
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
+" let g:lightline = {
+  " \ 'active': {
+  " \   'left': [ [ 'mode', 'paste' ],
+  " \           [ 'readonly', 'filename', 'modified' ] ],
+  " \   'right': [ [ 'lineinfo' ],
+  " \              [ 'windowid', 'percent' ],
+  " \              [ 'wordcount' ],
+  " \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+  " \ },
+  " \ 'inactive': {
+  " \   'left': [ [ 'filename', 'modified' ] ],
+  " \   'right': [ [ 'lineinfo' ],
+  " \              [ 'windowid', 'percent' ] ]
+  " \ },
+  " \ 'component': {
+  " \   'readonly': '%{&readonly?"":""}', 
+  " \   'wordcount': '%{WordCount()} words',
+  " \   'windowid': '%{winnr()}',
+  " \ } }
 
 " as outlined by :h lightline-problem-13
-augroup LightlineColorscheme
-  autocmd!
-  autocmd ColorScheme * call LightlineUpdate()
-augroup END
-function! LightlineUpdate()
-  if !exists('g:loaded_lightline')
-    return
-  endif
-  try
-    if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow\|gruvbox'
-      let g:lightline.colorscheme =
-            \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
-      call lightline#init()
-      call lightline#colorscheme()
-      call lightline#update()
-    endif
-  catch
-  endtry
-endfunction
+" augroup LightlineColorscheme
+  " autocmd!
+  " autocmd ColorScheme * call LightlineUpdate()
+" augroup END
+" function! LightlineUpdate()
+  " if !exists('g:loaded_lightline')
+    " return
+  " endif
+  " try
+    " if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow\|gruvbox'
+      " let g:lightline.colorscheme =
+            " \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
+      " call lightline#init()
+      " call lightline#colorscheme()
+      " call lightline#update()
+    " endif
+  " catch
+  " endtry
+" endfunction
 
 " height of the command bar
 set cmdheight=2
@@ -475,8 +485,11 @@ if has('gui_macvim')
   set macligatures
 endif
 
+
 if has('gui_running')
   set notermguicolors
+else
+  set termguicolors
 endif
 
 " support me some bloody italics
@@ -510,27 +523,34 @@ let g:thematic#themes = {
   \ 'fira':   { 'typeface': localfira,
               \ 'font-size': localfontsize,
               \ 'background': 'dark',
-              \ 'colorscheme': 'gruvbox'
+              \ 'colorscheme': 'gruvbox',
+              \ 'airline-theme': 'gruvbox'
   \ },
   \ 'code':   { 'typeface': 'JetBrains Mono Regular',
               \ 'font-size': localfontsize,
+              \ 'linespace': 0,
               \ 'background': 'dark',
-              \ 'colorscheme': 'gruvbox'
+              \ 'colorscheme': 'gruvbox',
+              \ 'airline-theme': 'gruvbox'
   \ },
   \ 'codelight': { 'typeface': 'JetBrains Mono Medium',
               \ 'font-size': localfontsize,
+              \ 'linespace': 0,
               \ 'background': 'light',
-              \ 'colorscheme': 'gruvbox'
+              \ 'colorscheme': 'gruvbox',
+              \ 'airline-theme': 'gruvbox'
   \ },
   \ 'edit':   { 'typeface': 'IBM Plex Mono',
               \ 'font-size': localfontsize,
               \ 'background': 'dark',
-              \ 'colorscheme': 'gruvbox'
+              \ 'colorscheme': 'gruvbox',
+              \ 'airline-theme': 'gruvbox'
   \ },
   \ 'write':  { 'typeface': 'IBM Plex Mono',
               \ 'font-size': localfontsize,
               \ 'background': 'light',
-              \ 'colorscheme': 'gruvbox'
+              \ 'colorscheme': 'gruvbox',
+              \ 'airline-theme': 'gruvbox'
   \ } }
 
 if has('gui_running')
