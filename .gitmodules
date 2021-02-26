@@ -162,3 +162,7 @@
 	path = pack/theming/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
 	ignore = dirty
+[submodule "pack/syntax/start/vim-jinja2-syntax"]
+	path = pack/syntax/start/vim-jinja2-syntax
+	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
+	ignore = dirty
