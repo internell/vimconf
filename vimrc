@@ -346,9 +346,10 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " don't bother loading trade winds without the necessary functions available
-if has('win_screenpos') || has('nvim_win_get_position')
+" if has('win_screenpos') || has('nvim_win_get_position')
+" actually no just do it
   silent! packadd vim-tradewinds
-endif
+" endif
 
 set splitright
 
@@ -408,7 +409,8 @@ vnoremap > >gv
 
 " tab into new brackets/braces/what have you
 " https://stackoverflow.com/a/18066591
-inoremap <C-Return> <CR><C-o>==<C-o>O
+" looks like my old mapping to <C-Return> isn’t handled so well in neovim, so:
+inoremap <leader><CR> <CR><C-o>==<C-o>O
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -422,6 +424,11 @@ set textwidth=140
 set wrapmargin=0
 " don’t wrap while typing
 set formatoptions-=t
+
+" <p> should be handled and indented as self-closing?
+" NO
+" https://stackoverflow.com/a/19327727
+let g:html_indent_inctags='p'
 
 " emmet remapping
 let g:user_emmet_settings = {
@@ -491,21 +498,21 @@ set t_ZH=^[[3m
 set t_ZR=^[[23m
 
 let localfontsize = 12
-let localfira = 'Fira Code'
+" let localfira = 'Fira Code'
 let localpitch = 'Pitch-Medium'
 
 let g:gruvbox_contrast_dark = 'soft'
 let g:gruvbox_contrast_light = 'medium'
 
-if has("gui_running")
-  " if has("gui_macvim")
-  if has("gui_gtk2") || has("gui_gtk3")
-    " Linux GUI
-    let localfontsize = 9
-    let localfira = 'Fira Code Medium'
-    " let localpitch = 'Pitch Light'
-  endif
-endif
+" if has("gui_running")
+  " " if has("gui_macvim")
+  " if has("gui_gtk2") || has("gui_gtk3")
+    " " Linux GUI
+    " let localfontsize = 9
+    " let localfira = 'Fira Code Medium'
+    " " let localpitch = 'Pitch Light'
+  " endif
+" endif
 
 let g:thematic#defaults = {
   \ 'linespace': 2,
@@ -514,12 +521,6 @@ let g:thematic#defaults = {
   \ 'columns': 160
   \ }
 let g:thematic#themes = {
-  \ 'fira':   { 'typeface': localfira,
-              \ 'font-size': localfontsize,
-              \ 'background': 'dark',
-              \ 'colorscheme': 'gruvbox',
-              \ 'airline-theme': 'gruvbox'
-  \ },
   \ 'code':   { 'typeface': 'JetBrains Mono Regular',
               \ 'font-size': localfontsize,
               \ 'linespace': 0,
@@ -714,7 +715,7 @@ autocmd FileType vimwiki setlocal foldtext=MarkdownFoldText()
 
 let g:vimwiki_global_ext = 0
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_hl_headers = 1
+let g:vimwiki_hl_headers = 0
 let g:vimwiki_hl_cb_checked = 1
 
 function! LocalWikiCheck()
@@ -735,12 +736,12 @@ call LocalWikiCheck()
 " hi! link markdownH5 GruvboxGreenBold
 " hi! link markdownH6 GruvboxBlueBold
 
-highlight! link VimwikiHeader1 markdownH1
-highlight! link VimwikiHeader2 markdownH2
-highlight! link VimwikiHeader3 markdownH3
-highlight! link VimwikiHeader4 markdownH4
-highlight! link VimwikiHeader5 markdownH5
-highlight! link VimwikiHeader6 markdownH6
+highlight link VimwikiHeader1 markdownH1
+highlight link VimwikiHeader2 markdownH2
+highlight link VimwikiHeader3 markdownH3
+highlight link VimwikiHeader4 markdownH4
+highlight link VimwikiHeader5 markdownH5
+highlight link VimwikiHeader6 markdownH6
 
 " hyperspecific function to send deleted text into garbage file
 " function! DumpRegister(text)
