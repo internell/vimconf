@@ -93,6 +93,9 @@ command! -nargs=? -complete=dir Vexplore leftabove vsplit | silent Dirvish <args
 " SEARCH, MATCHING, HIGHLIGHTING
 """"""""""""""""""""""""""""""""
 
+" increase tenfold so syntax highlighting doesn't die
+set maxmempattern=10000
+
 " finding files - search into subfolders
 " provides tab completion for file-related tasks
 " https://youtu.be/XA2WjJbmmoM?t=421
@@ -267,6 +270,7 @@ set cursorline
 set cursorcolumn
 
 set listchars=tab:»\ ,eol:¬,nbsp:␣,trail:·,extends:›,precedes:‹
+set list
 " a nice invisible char toggler
 nmap <leader>l :set list!<CR>
 
@@ -419,7 +423,6 @@ set pastetoggle=<F2>
 " nicer word wrapping
 set wrap
 set linebreak
-set nolist
 set textwidth=140
 set wrapmargin=0
 " don’t wrap while typing
@@ -641,7 +644,7 @@ if executable('fzf') ==#1
   nnoremap <leader>f :Files<cr>
 
   command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--border']}, <bang>0)
+    \ call fzf#vim#files(<q-args>, {'options': ['--multi', '--layout=reverse', '--border']}, <bang>0)
 
   let g:fzf_colors = {
     \ 'fg':      ['fg', 'Normal'],
