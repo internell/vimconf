@@ -724,7 +724,7 @@ highlight link VimwikiHeader6 markdownH6
 """"""""""""""""
 
 " these also need both fzf and rg installed
-if executable('fzf') ==# 1 && executable('rg') ==#1
+if executable('fzf') ==# 1 && executable('rg') ==# 1
   silent! packadd notational-fzf-vim
 
   if !exists('g:nv_search_paths')
