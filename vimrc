@@ -203,47 +203,6 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
-" let g:lightline = {
-  " \ 'active': {
-  " \   'left': [ [ 'mode', 'paste' ],
-  " \           [ 'readonly', 'filename', 'modified' ] ],
-  " \   'right': [ [ 'lineinfo' ],
-  " \              [ 'windowid', 'percent' ],
-  " \              [ 'wordcount' ],
-  " \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-  " \ },
-  " \ 'inactive': {
-  " \   'left': [ [ 'filename', 'modified' ] ],
-  " \   'right': [ [ 'lineinfo' ],
-  " \              [ 'windowid', 'percent' ] ]
-  " \ },
-  " \ 'component': {
-  " \   'readonly': '%{&readonly?"":""}', 
-  " \   'wordcount': '%{WordCount()} words',
-  " \   'windowid': '%{winnr()}',
-  " \ } }
-
-" as outlined by :h lightline-problem-13
-" augroup LightlineColorscheme
-  " autocmd!
-  " autocmd ColorScheme * call LightlineUpdate()
-" augroup END
-" function! LightlineUpdate()
-  " if !exists('g:loaded_lightline')
-    " return
-  " endif
-  " try
-    " if g:colors_name =~# 'wombat\|solarized\|landscape\|jellybeans\|seoul256\|Tomorrow\|gruvbox'
-      " let g:lightline.colorscheme =
-            " \ substitute(substitute(g:colors_name, '-', '_', 'g'), '256.*', '', '')
-      " call lightline#init()
-      " call lightline#colorscheme()
-      " call lightline#update()
-    " endif
-  " catch
-  " endtry
-" endfunction
-
 " height of the command bar
 set cmdheight=2
 " display incomplete commands
@@ -413,8 +372,9 @@ vnoremap > >gv
 
 " tab into new brackets/braces/what have you
 " https://stackoverflow.com/a/18066591
-" looks like my old mapping to <C-Return> isn’t handled so well in neovim, so:
-inoremap <leader><CR> <CR><C-o>==<C-o>O
+" If mapping to <C-Return> isn’t working properly, it’s probably an escape sequence issue:
+" https://github.com/jalvesaq/Nvim-R/issues/64#issuecomment-715606210
+inoremap <C-Return> <CR><C-o>==<C-o>O
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
@@ -429,7 +389,7 @@ set wrapmargin=0
 set formatoptions-=t
 
 " <p> should be handled and indented as self-closing?
-" NO
+" nope, nope nope
 " https://stackoverflow.com/a/19327727
 let g:html_indent_inctags='p'
 
@@ -477,6 +437,7 @@ augroup END
 
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
 autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
+
 
 
 """""""""""""""""""""""""""""""""""""
