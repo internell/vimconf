@@ -28,6 +28,7 @@ let g:nv_search_paths = ['~/whatever']
 
 let example_wiki = {}
 let example_wiki.path = '~/vimwiki/'
+let example_wiki.name = 'examplewiki'
 let example_wiki.syntax = 'markdown'
 let example_wiki.ext = '.md'
 let example_wiki.nested_syntaxes = {'html': 'html', 'javascript': 'javascript', 'css': 'css', 'python': 'python'}
