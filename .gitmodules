@@ -162,3 +162,7 @@
 	path = pack/syntax/start/vim-jinja2
 	url = https://github.com/internell/Vim-Jinja2-Syntax.git
 	ignore = dirty
+[submodule "pack/interface/start/nnn"]
+	path = pack/interface/start/nnn
+	url = https://github.com/mcchrish/nnn.vim.git
+	ignore = dirty
