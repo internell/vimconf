@@ -166,3 +166,7 @@
 	path = pack/interface/start/nnn
 	url = https://github.com/mcchrish/nnn.vim.git
 	ignore = dirty
+[submodule "pack/syntax/opt/vim-jst"]
+	path = pack/syntax/opt/vim-jst
+	url = https://github.com/briancollins/vim-jst.git
+	ignore = dirty
