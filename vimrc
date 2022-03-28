@@ -253,7 +253,6 @@ let g:startify_lists = [
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " NAVIGATION, TABS, WINDOWS, BUFFERS, SESSIONS
-" JUST KIDDING ABOUT THE TABS
 """"""""""""""""""""""""""""""""""""""""""""""
 
 " sets title for terminal window
@@ -351,6 +350,9 @@ nmap <CR> o<Esc>
 " make s, ss, S behave like d, dd, D without saving cut text to register
 nnoremap s "_d
 
+" gettext wrapper macro
+let @g="ysiw[ysa]]wysiw)ysi)'F(i_jj"
+
 " make backspace behave in a sane manner
 set backspace=indent,eol,start
 
@@ -372,9 +374,10 @@ vnoremap > >gv
 
 " tab into new brackets/braces/what have you
 " https://stackoverflow.com/a/18066591
-" If mapping to <C-Return> isn’t working properly, it’s probably an escape sequence issue:
-" https://github.com/jalvesaq/Nvim-R/issues/64#issuecomment-715606210
-inoremap <C-Return> <CR><C-o>==<C-o>O
+inoremap <leader><leader><CR> <CR><C-o>==<C-o>O
+
+" but a single end-of-line comma always gets to stay
+inoremap <leader><CR> ,<CR>
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
