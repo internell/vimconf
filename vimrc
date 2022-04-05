@@ -233,6 +233,11 @@ set list
 " a nice invisible char toggler
 nmap <leader>l :set list!<CR>
 
+augroup i_dont_want_stupid_eol_chars_messing_up_my_linewraps_in_these_cases
+  autocmd!
+  autocmd FileType vimwiki setlocal nolist
+augroup END
+
 set foldenable
 set foldcolumn=3
 set foldmethod=indent
