@@ -68,7 +68,6 @@ endif
 source ~/.vim/plugins.vim
 
 
-
 """""""""""""""
 " FILE HANDLING
 """""""""""""""
@@ -600,15 +599,15 @@ let g:vim_vue_plugin_config = {
 """"""""""""
 
 " space after comment delimiter
-let g:NERDSpaceDelims = 1
+" let g:NERDSpaceDelims = 1
 " allow commenting and inverting empty lines
-let g:NERDCommentEmptyLines = 1
+" let g:NERDCommentEmptyLines = 1
 " this appears to be the best way to customize comments
-let g:NERDCustomDelimiters = {
-  \ 'less': { 'left': '//', 'right': '' },
-  \ 'vue': { 'left': '//', 'right': '' },
-  \ 'jinja': { 'left': '[#', 'right': '#]' }
-  \ }
+" let g:NERDCustomDelimiters = {
+"   \ 'less': { 'left': '//', 'right': '' },
+"   \ 'vue': { 'left': '//', 'right': '' },
+"   \ 'jinja': { 'left': '[#', 'right': '#]' }
+"   \ }
 
 
 

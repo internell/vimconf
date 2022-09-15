@@ -9,6 +9,19 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 
 
+" Status bar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+
+" Miscellany
+Plug 'mhinz/vim-startify'
+Plug 'nvim-treesitter/nvim-treesitter',
+      \ { 'do': ':TSUpdate' }
+Plug 'vimwiki/vimwiki'
+Plug 'xolox/vim-misc'
+
+
 " Interface
 Plug 'alok/notational-fzf-vim'
 Plug 'andymass/vim-tradewinds'
@@ -20,20 +33,19 @@ Plug 'metakirby5/codi.vim'
 Plug 'mileszs/ack.vim'
 Plug 'qpkorr/vim-bufkill'
 Plug 'tpope/vim-vinegar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-session'
 
 
 " Editing
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'andymass/vim-matchup'
 Plug 'amadeus/vim-convert-color-to'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
-" Plug 'numToStr/Comment.nvim', { 'tag': 'v0.6' }
+Plug 'numToStr/Comment.nvim', { 'tag': 'v0.6' }
 Plug 'reedes/vim-textobj-quote'
 Plug 'reedes/vim-textobj-sentence'
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
 Plug 'tommcdo/vim-exchange'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
@@ -60,6 +72,7 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'posva/vim-vue',
       " \ { 'for': 'vue' }
+Plug 'p00f/nvim-ts-rainbow'
 Plug 'leafoftree/vim-vue-plugin',
       \ { 'for': 'vue' }
 Plug 'tpope/vim-markdown'
@@ -70,12 +83,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " Theming
 Plug 'morhetz/gruvbox'
 Plug 'reedes/vim-thematic'
-
-
-" Miscellany
-Plug 'mhinz/vim-startify'
-Plug 'vimwiki/vimwiki'
-Plug 'xolox/vim-misc'
 
 
 call plug#end()
