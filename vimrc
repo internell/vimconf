@@ -600,8 +600,6 @@ let g:NERDCustomDelimiters = {
 
 " first... check if fzf is available
 if executable('fzf') ==#1
-  silent! packadd fzf
-
   " add fzf directory to runtimepath
   set rtp+=~/.fzf
 
@@ -654,40 +652,8 @@ if executable('fzf') ==# 1 && executable('rg') ==#1
 
   command! -bang -nargs=* Rg
     \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
-    " \ call fzf#vim#grep('rg --column --line-number --no-heading --smart-case -g "!{node_modules,.svn,.git}" --color=always --colors "path:fg:131,165,152" --colors "line:fg:142,192,124" '.shellescape(<q-args>), 1, fzf#vim#with_preview({'options': ['--color', 'hl:#d3869b,hl+:#fb4934']}), <bang>0)
 
 endif
-
-
-
-"""""""""""""""
-" NNN SETTINGS
-"""""""""""""""
-
-nnoremap <leader>nn :NnnPicker<CR>
-let g:nnn#layout = {
-      \ 'window': { 
-        \ 'width': 0.9, 
-        \ 'height': 0.6, 
-        \ 'highlight': 'Debug' 
-        \ } 
-      \ }
-let g:nnn#action = {
-      \ '<c-t>': 'tab split',
-      \ '<c-s>': 'split',
-      \ '<c-v>': 'vsplit',
-      \ }
-
-
-"""""""""""""""
-" GOYO SETTINGS
-"""""""""""""""
-
-map <leader>gy :Goyo<CR>
-let g:goyo_width='50%'
-let g:goyo_height='85%'
-let g:goyo_margin_top='3'
-let g:goyo_margin_bottom='7'
 
 
 
@@ -765,8 +731,6 @@ highlight link VimwikiHeader6 markdownH6
 
 " these also need both fzf and rg installed
 if executable('fzf') ==# 1 && executable('rg') ==# 1
-  silent! packadd notational-fzf-vim
-
   if !exists('g:nv_search_paths')
     let g:nv_search_paths = ['~']
   endif

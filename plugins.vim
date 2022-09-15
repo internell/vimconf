@@ -12,6 +12,7 @@ call plug#begin('~/.vim/plugged')
 " Interface
 Plug 'alok/notational-fzf-vim'
 Plug 'andymass/vim-tradewinds'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mattn/calendar-vim'
@@ -56,7 +57,8 @@ Plug 'mustache/vim-mustache-handlebars',
       \ { 'for': ['handlebars', 'hbs', 'hdbs', 'hb', 'mustache', 'hogan', 'hulk', 'hjs' ] }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue',
+      \ { 'for': 'vue' }
 Plug 'tpope/vim-markdown'
 Plug 'vim-perl/vim-perl'
 Plug 'Vimjas/vim-python-pep8-indent'
