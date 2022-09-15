@@ -54,6 +54,21 @@ set lazyredraw
 
 
 
+"""""""""""""
+" GET PLUGINS
+"""""""""""""
+
+" let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let data_dir = '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+source ~/.vim/plugins.vim
+
+
+
 """""""""""""""
 " FILE HANDLING
 """""""""""""""
@@ -712,8 +727,6 @@ let g:vimwiki_hl_cb_checked = 1
 function! LocalWikiCheck()
   if filereadable(expand('~/.vim/wikilist.vim'))
     source ~/.vim/wikilist.vim
-  " else
-    " echo "Local vimwiki list not found"
   endif
 endfunction
 call LocalWikiCheck()
