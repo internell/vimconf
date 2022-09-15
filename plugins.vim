@@ -30,14 +30,15 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'amadeus/vim-convert-color-to'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
+" Plug 'numToStr/Comment.nvim', { 'tag': 'v0.6' }
+Plug 'reedes/vim-textobj-quote'
+Plug 'reedes/vim-textobj-sentence'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tommcdo/vim-exchange'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'reedes/vim-textobj-quote'
-Plug 'reedes/vim-textobj-sentence'
 
 
 " Syntax
@@ -57,7 +58,9 @@ Plug 'mustache/vim-mustache-handlebars',
       \ { 'for': ['handlebars', 'hbs', 'hdbs', 'hb', 'mustache', 'hogan', 'hulk', 'hjs' ] }
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
-Plug 'posva/vim-vue',
+" Plug 'posva/vim-vue',
+      " \ { 'for': 'vue' }
+Plug 'leafoftree/vim-vue-plugin',
       \ { 'for': 'vue' }
 Plug 'tpope/vim-markdown'
 Plug 'vim-perl/vim-perl'

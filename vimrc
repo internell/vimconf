@@ -577,6 +577,22 @@ augroup END
 " highlight Folded guibg=darkgrey
 " highlight FoldColumn guibg=darkgrey
 
+let g:vim_vue_plugin_config = {
+    \ 'syntax': {
+      \ 'template': ['html'],
+      \ 'script': ['javascript'],
+      \ 'style': ['css', 'scss', 'less'],
+      \ 'i18n': ['json', 'yaml'],
+      \ 'route': 'json',
+    \ },
+    \ 'full_syntax': ['json'],
+    \ 'initial_indent': ['i18n', 'i18n.json', 'yaml'],
+    \ 'attribute': 1,
+    \ 'keyword': 1,
+    \ 'foldexpr': 1,
+    \ 'debug': 0,
+  \ }
+
 
 
 """"""""""""
@@ -590,7 +606,9 @@ let g:NERDCommentEmptyLines = 1
 " this appears to be the best way to customize comments
 let g:NERDCustomDelimiters = {
   \ 'less': { 'left': '//', 'right': '' },
-  \ 'vue': { 'left': '//', 'right': '' } }
+  \ 'vue': { 'left': '//', 'right': '' },
+  \ 'jinja': { 'left': '[#', 'right': '#]' }
+  \ }
 
 
 
@@ -740,3 +758,6 @@ if executable('fzf') ==# 1 && executable('rg') ==# 1
   nnoremap <leader>nv :NV<CR>
 
 endif
+
+
+
