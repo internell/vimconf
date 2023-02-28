@@ -177,7 +177,6 @@ endif
 " INTERFACE / STATUS LINE
 """""""""""""""""""""""""
 
-" because lightline already displays the mode
 set noshowmode
 
 " always show
@@ -201,21 +200,21 @@ augroup WordCounter
   autocmd! CursorHoldI * call UpdateWordCount()
 augroup END
 
-let g:airline#extensions#fzf#enabled = 1
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline_detect_whitespace = 0
+" let g:airline#extensions#fzf#enabled = 1
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline_detect_whitespace = 0
  
 " if has("gui_running")
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 " let g:airline_symbols.readonly = ''
 " endif
 
-function! AirlineInit()
-  call airline#parts#define_function('wordcount', 'WordCount')
-  let g:airline_section_y = airline#section#create_right(['wordcount', 'words'])
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
+" function! AirlineInit()
+"   call airline#parts#define_function('wordcount', 'WordCount')
+"   let g:airline_section_y = airline#section#create_right(['wordcount', 'words'])
+" endfunction
+" autocmd User AirlineAfterInit call AirlineInit()
 
 " height of the command bar
 set cmdheight=2
@@ -457,6 +456,7 @@ augroup textobj_sentence
   autocmd FileType text call textobj#sentence#init()
 augroup END
 
+autocmd FileType markdown setlocal tabstop=2 shiftwidth=2
 autocmd FileType tt2html setlocal tabstop=4 shiftwidth=4
 autocmd FileType yaml setlocal tabstop=4 shiftwidth=4
 
@@ -760,3 +760,8 @@ endif
 
 
 
+"""""""
+" BLACK
+"""""""
+
+" nnoremap <buffer><silent> <c-q> <cmd>call Black()<cr>

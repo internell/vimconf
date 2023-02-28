@@ -10,14 +10,17 @@ call plug#begin('~/.vim/plugged')
 
 
 " Status bar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'nvim-lualine/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
 
 " Miscellany
 Plug 'mhinz/vim-startify'
 Plug 'nvim-treesitter/nvim-treesitter',
       \ { 'do': ':TSUpdate' }
+Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
 Plug 'xolox/vim-misc'
 
@@ -25,6 +28,7 @@ Plug 'xolox/vim-misc'
 " Interface
 Plug 'alok/notational-fzf-vim'
 Plug 'andymass/vim-tradewinds'
+" Plug 'ggandor/leap.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
@@ -54,20 +58,22 @@ Plug 'tpope/vim-surround'
 
 
 " Syntax
-Plug 'ap/vim-css-color',
-      \ { 'for': ['css', 'less', 'scss', 'stylus'] }
 Plug 'briancollins/vim-jst',
       \ { 'for': ['ejs', 'jst', 'djs', 'hamljs', 'ect'] }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'groenewege/vim-less',
       \ { 'for': 'less' }
-Plug 'iloginow/vim-stylus'
+" Maddening note: if there are two plugins of differing origins but the same name,
+" the one listed last will get installed, regardless of whether it's commented out.
+" Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'internell/Vim-Jinja2-Syntax'
+Plug 'iloginow/vim-stylus'
 Plug 'leafOfTree/vim-svelte-plugin',
       \ { 'for': 'svelte' }
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'mustache/vim-mustache-handlebars',
       \ { 'for': ['handlebars', 'hbs', 'hdbs', 'hb', 'mustache', 'hogan', 'hulk', 'hjs' ] }
+Plug 'NvChad/nvim-colorizer.lua'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 " Plug 'posva/vim-vue',
@@ -78,6 +84,11 @@ Plug 'leafoftree/vim-vue-plugin',
 Plug 'tpope/vim-markdown'
 Plug 'vim-perl/vim-perl'
 Plug 'Vimjas/vim-python-pep8-indent'
+
+
+" Linting
+let g:python3_host_prog = $HOME . '/.local/nvim-venv/nvim/bin/python'
+Plug 'psf/black', { 'branch': 'stable' }
 
 
 " Theming
