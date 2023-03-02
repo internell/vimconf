@@ -18,6 +18,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Miscellany
 Plug 'mhinz/vim-startify'
+Plug 'nvim-orgmode/orgmode'
 Plug 'nvim-treesitter/nvim-treesitter',
       \ { 'do': ':TSUpdate' }
 Plug 'tpope/vim-fugitive'
