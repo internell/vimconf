@@ -27,17 +27,18 @@ Plug 'xolox/vim-misc'
 
 
 " Interface
-Plug 'alok/notational-fzf-vim'
+Plug 'akinsho/toggleterm.nvim', { 'tag': '2.4.0' }
+" Plug 'alok/notational-fzf-vim'
 Plug 'andymass/vim-tradewinds'
 " Plug 'ggandor/leap.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'justinmk/vim-dirvish'
 Plug 'mattn/calendar-vim'
-Plug 'metakirby5/codi.vim'
-Plug 'mileszs/ack.vim'
+" Plug 'metakirby5/codi.vim'
+" Plug 'mileszs/ack.vim'
 Plug 'qpkorr/vim-bufkill'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'xolox/vim-session'
 
 
@@ -47,7 +48,7 @@ Plug 'andymass/vim-matchup'
 Plug 'amadeus/vim-convert-color-to'
 Plug 'kana/vim-textobj-user'
 Plug 'mattn/emmet-vim'
-Plug 'numToStr/Comment.nvim', { 'tag': 'v0.6' }
+Plug 'numToStr/Comment.nvim', { 'tag': 'v0.7.0' }
 Plug 'reedes/vim-textobj-quote'
 Plug 'reedes/vim-textobj-sentence'
 " Plug 'scrooloose/nerdcommenter'

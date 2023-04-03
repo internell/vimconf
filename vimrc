@@ -267,6 +267,8 @@ let g:startify_lists = [
       \ { 'type': 'files', 'header': ['   Files'] }
       \ ]
 
+set viminfo='100,n$HOME/.vim/files/info/viminfo'
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
